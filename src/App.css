@@ -6,9 +6,10 @@
   --darkestPurple: #21005D;
   --lightPurple: #E8DEF8;
   --darkBlack: #371B34;
-  --fuschia: #FCDDEC;
+  --fuschia: #CDC2F1;
   --darkerPink: #EFB8C8;
   --errorRed: #B3261E;
+  --white: #E5E5E5;
 }
 
 
@@ -25,16 +26,12 @@
 
 body {
   font-family: 'Alegreya Sans', sans-serif;
-  font-size: 1em;
+  font-size: 1.0em;
   font-weight: 400;
-  background: var(--purple);
+  background-color: var(--purple);
   color: var(--darkBlack);
 }
 
-.page-title h1 {
-  font-size: 1.8em;
-  margin: 0.1em;
-}
 
 h1,
 h2,
@@ -50,5 +47,47 @@ h5 {
 .container {
   width: 100vw;
   max-width: 100ch;
-  min-height: 120ch;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 500px;
+  height: 50vh;
+  justify-content: space-between;
+}
+
+.page h1 {
+  align-self: center;
+  padding-top: 4%;
+  font-size: 4em;
+  text-align: center;
+}
+
+.page h1:before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  width: 100vw;
+  height: 100vw;
+  background-color: var(--fuschia);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+.btn-next-page {
+  background-color: var(--darkBlack);
+  margin: 2ch;
+  color: var(--white);
+  padding: 2ch;
+  min-width: 80%;
+  font-size: 1.4em;
+  border-radius: 8px;
+  border: none;
+  align-self: center;
+  position: absolute;
+  bottom: 10%;
 }

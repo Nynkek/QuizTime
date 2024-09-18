@@ -4,7 +4,8 @@
 :root {
   --purple: #AEAFF7;
   --darkestPurple: #21005D;
-  --lightPurple: #E8DEF8;
+  --lightPurple: #dac6fa;
+  --lighterPurple: #EADDFF;
   --darkBlack: #371B34;
   --fuschia: #CDC2F1;
   --darkerPink: #EFB8C8;
@@ -42,6 +43,10 @@ h5 {
   font-optical-sizing: auto;
   font-style: normal;
   letter-spacing: 0.02em;
+}
+
+h1 {
+  padding-bottom: 1em;
 }
 
 .container {
@@ -88,6 +93,5 @@ h5 {
   border-radius: 8px;
   border: none;
   align-self: center;
-  position: absolute;
-  bottom: 10%;
+
 }

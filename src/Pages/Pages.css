@@ -1,0 +1,22 @@
+h1 {
+    padding-top: 2em;
+    text-align: center;
+}
+
+.circle-bg:before {
+    content: "";
+    position: absolute;
+    top: -20vw;
+    left: 50%;
+    width: 100vw;
+    height: 100vw;
+    background-color: var(--fuschia);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.content {
+    padding-left: 3em;
+    font-size: 1.3em;
+}

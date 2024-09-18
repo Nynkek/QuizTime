@@ -1,0 +1,23 @@
+header {
+    background-color: var(--lightPurple);
+    display: flex;
+    padding: 2ch;
+    justify-content: space-between;
+    margin: 0px auto;
+}
+
+header .team-name {
+    min-width: 25ch;
+    min-height: 5em;
+}
+
+header .team-name p {
+    font-size: 1.2em;
+}
+
+header .score {
+    min-width: 20ch;
+    align-self: center;
+    text-align: end;
+    font-size: 1.5em;
+}

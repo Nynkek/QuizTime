@@ -7,7 +7,6 @@ function TeamPicker() {
     const teams = ["Team A", "Team B", "Team C", "Team D", "Team E"];
     const [selectedTeam, setSelectedTeam] = useState("");
 
-    // Functie om het geselecteerde team op te slaan in de localStorage
     const handleTeamSelect = (team) => {
         setSelectedTeam(team);
         localStorage.setItem("selectedTeam", team);
@@ -22,24 +21,26 @@ function TeamPicker() {
 
     return (
         <>
-            <h1 className='circle-bg'>Kies je team:</h1>
-            <div className="btn-container">
-                {teams.map((team, index) => (
-                    <button
-                        key={index}
-                        onClick={() => handleTeamSelect(team)}
-                        className={selectedTeam === team ? "selected" : ""}
-                    >
-                        {team}
-                    </button>
-                ))}
+            <div className='.content-page'>
+                <h1 className='circle-bg'>Kies je team:</h1>
+                <div className="btn-container">
+                    {teams.map((team, index) => (
+                        <button
+                            key={index}
+                            onClick={() => handleTeamSelect(team)}
+                            className={selectedTeam === team ? "selected" : ""}
+                        >
+                            {team}
+                        </button>
+                    ))}
 
-                <Link to="/welcome-team">
+
+                </div>
+                <Link to="/welcome-team" className='link-next-page'>
                     <button type='button' className='btn-next-page'>Start &#8594; </button>
                 </Link>
+
             </div>
-
-
 
         </>
     );

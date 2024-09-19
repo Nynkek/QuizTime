@@ -15,7 +15,6 @@ function App() {
           <Route path='/welcome-team' element={<WelcomeTeam />} />
           <Route path='/quiz' element={<Quiz />} />
         </Routes>
-
       </div>
     </div>
   );

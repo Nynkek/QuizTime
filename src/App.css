@@ -50,8 +50,9 @@ h1 {
 }
 
 .container {
-  width: 100vw;
   max-width: 100ch;
+  width: 100vw;
+  min-width: 320px;
 }
 
 .page {
@@ -85,13 +86,14 @@ h1 {
 
 .btn-next-page {
   background-color: var(--darkBlack);
-  margin: 2ch;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  margin-left: 5%;
   color: var(--white);
   padding: 2ch;
-  min-width: 80%;
+  width: 90%;
   font-size: 1.4em;
   border-radius: 8px;
   border: none;
   align-self: center;
-
 }

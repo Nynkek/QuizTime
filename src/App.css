@@ -49,6 +49,14 @@ h1 {
   padding-bottom: 1em;
 }
 
+h2 {
+  padding-top: 0.8em;
+}
+
+h3 {
+  padding-top: 0.6em;
+}
+
 .container {
   max-width: 100ch;
   width: 100vw;

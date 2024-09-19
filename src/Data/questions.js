@@ -6,6 +6,14 @@ export const questions_multiple_choice = [
         q_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
         answer: 'Nynke',
     },
+    {
+        title: 'Van wie is de hobby:',
+        focused_word: 'kogelstoten',
+        type: 'checkbox',
+        q_options: ['Nynke', 'Toes', 'Jan', 'Pim'],
+        answer: 'Toes',
+    },
+
 ];
 
 export const questions_drag_and_drop = [

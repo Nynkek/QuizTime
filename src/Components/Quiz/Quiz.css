@@ -1,0 +1,87 @@
+/* TwoOptions.css */
+.puzzle-two-options {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.puzzle-two-options ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.puzzle-two-options li {
+    flex: 1;
+    margin: 10px;
+}
+
+.puzzle-two-options li input[type="radio"] {
+    display: none;
+}
+
+.puzzle-two-options li label {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.puzzle-two-options li input[type="radio"]:checked+label {
+    background-color: var(--lightPurple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+}
+
+/* TwoOptions.css */
+.puzzle-multiple-choice h3 strong {
+    font-size: 2em;
+}
+
+.puzzle-multiple-choice {
+    width: 100%;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.puzzle-multiple-choice ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.puzzle-multiple-choice li {
+    margin: 10px 0;
+}
+
+.puzzle-multiple-choice li input[type="checkbox"] {
+    display: none;
+    /* Verberg de standaard checkbox */
+}
+
+.puzzle-multiple-choice li label {
+    display: block;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.puzzle-multiple-choice li input[type="checkbox"]:checked+label {
+    background-color: var(--lightPurple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+
+}

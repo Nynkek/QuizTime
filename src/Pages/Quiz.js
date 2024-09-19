@@ -3,6 +3,7 @@ import Header from "../Components/Header/Header";
 import { Link } from "react-router-dom";
 import './Pages.css';
 import TwoOptions from "../Components/Quiz/TwoOptions";
+import MultipleChoice from '../Components/Quiz/MultipleChoice';
 
 
 
@@ -19,6 +20,8 @@ function Quiz() {
                 <div className="content">
                     <h1>Quiz</h1>
                     <TwoOptions />
+                    <hr />
+                    <MultipleChoice />
 
 
                 </div>

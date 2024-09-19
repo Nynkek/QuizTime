@@ -1,132 +1,101 @@
 import React, { useState } from 'react';
 
-
 function MultipleChoice() {
+    const [answers, setAnswers] = useState({});
 
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [score, setScore] = useState(0);
-    const [answers, setAnswers] = useState([]);
-    const [showScore, setShowScore] = useState(false);
+    // Multiple choice vragenlijst
+    const questions_multiple_choice = [
+        {
+            title: 'Van wie is de hobby:',
+            focused_word: 'borduren',
+            type: 'checkbox',
+            q_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
+            answer: 'Nynke',
+        },
+        {
+            title: 'Van wie is de hobby:',
+            focused_word: 'kogelstoten',
+            type: 'checkbox',
+            q_options: ['Nynke', 'Toes', 'Jan', 'Pim'],
+            answer: 'Toes',
+        },
+    ];
 
+    // Functie om antwoord voor een vraag op te slaan
     const handleAnswerSelection = (questionIndex, selectedAnswer) => {
-        const updatedAnswers = [...answers];
-        updatedAnswers[questionIndex] = selectedAnswer;
+        const updatedAnswers = { ...answers };
+
+        // Als de vraag nog geen antwoorden heeft, maak een lege array
+        if (!updatedAnswers[questionIndex]) {
+            updatedAnswers[questionIndex] = [];
+        }
+
+        // Controleer of de geselecteerde optie al in de antwoordenlijst zit
+        if (updatedAnswers[questionIndex].includes(selectedAnswer)) {
+            // Als het al is geselecteerd, haal het uit de lijst (deselecteren)
+            updatedAnswers[questionIndex] = updatedAnswers[questionIndex].filter(
+                (answer) => answer !== selectedAnswer
+            );
+        } else {
+            // Voeg anders het antwoord toe aan de lijst
+            updatedAnswers[questionIndex].push(selectedAnswer);
+        }
+
         setAnswers(updatedAnswers);
     };
 
-    const handleNextQuestion = () => {
-        if (
-            answers[currentQuestion] === questions[currentQuestion].answer ||
-            JSON.stringify(answers[currentQuestion]) ===
-            JSON.stringify(questions[currentQuestion].answer)
-        ) {
-            setScore(score + 1);
-        }
-        if (currentQuestion + 1 < questions.length) {
-            setCurrentQuestion(currentQuestion + 1);
-        } else {
-            setShowScore(true);
-        }
+    // Functie om te controleren of er minimaal één antwoord is geselecteerd voor een vraag
+    const hasAnsweredQuestion = (questionIndex) => {
+        return answers[questionIndex] && answers[questionIndex].length > 0;
     };
 
     return (
+        <div className='puzzle-multiple-choice'>
+            {questions_multiple_choice.map((question, questionIndex) => (
+                <div key={questionIndex}>
+                    {/* Vraag wordt pas zichtbaar zodra de vorige vraag is beantwoord */}
+                    {questionIndex === 0 || hasAnsweredQuestion(questionIndex - 1) ? (
+                        <>
+                            <h3>{question.title} <strong>{question.focused_word}</strong></h3>
 
-        <>
-            <div>
-                {showScore ? (
-                    <div>
-                        <h2>Quiz Complete!</h2>
-                        <h3>Your Score: {score}</h3>
-                    </div>
-                ) : (
-                    <div>
-                        <h2>Question {currentQuestion + 1}</h2>
-                        <h3>{questions[currentQuestion].question}</h3>
-                        {questions[currentQuestion].type === 'radio' && (
                             <ul>
-                                {questions[currentQuestion].options.map((option, index) => (
-                                    <li key={index}>
-                                        <input
-                                            type="radio"
-                                            name={`question${currentQuestion}`}
-                                            value={option}
-                                            onChange={() =>
-                                                handleAnswerSelection(currentQuestion, option)
-                                            }
-                                        />
-                                        {option}
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                        {questions[currentQuestion].type === 'checkbox' && (
-                            <ul>
-                                {questions[currentQuestion].options.map((option, index) => (
+                                {question.q_options.map((option, index) => (
                                     <li key={index}>
                                         <input
                                             type="checkbox"
-                                            name={`question${currentQuestion}`}
+                                            id={`question${questionIndex}_option${index}`}
+                                            name={`question${questionIndex}`}
                                             value={option}
+                                            checked={
+                                                answers[questionIndex] &&
+                                                answers[questionIndex].includes(option)
+                                            }
                                             onChange={() =>
-                                                handleAnswerSelection(currentQuestion, option)
+                                                handleAnswerSelection(questionIndex, option)
                                             }
                                         />
-                                        {option}
+                                        {/* Label koppelen aan de input via de id */}
+                                        <label htmlFor={`question${questionIndex}_option${index}`}>
+                                            {option}
+                                        </label>
                                     </li>
                                 ))}
                             </ul>
-                        )}
-                        {questions[currentQuestion].type === 'input' && (
-                            <input
-                                type="text"
-                                onChange={(e) =>
-                                    handleAnswerSelection(currentQuestion, e.target.value)
-                                }
-                            />
-                        )}
-                        {questions[currentQuestion].type === 'textarea' && (
-                            <textarea
-                                rows="4"
-                                cols="50"
-                                onChange={(e) =>
-                                    handleAnswerSelection(currentQuestion, e.target.value)
-                                }
-                            />
-                        )}
-                        <button onClick={handleNextQuestion}>Next Question</button>
-                    </div>
-                )}
-            </div>
-        </>
-
+                        </>
+                    ) : null}
+                </div>
+            ))}
+            {/* Eventuele controle knop of submit kan hier worden geplaatst */}
+            <button
+                onClick={() => console.log(answers)}
+                className={'btn-next-page'}
+            >
+                Controleer Antwoorden
+            </button>
+        </div>
     );
 }
 
+
+
 export default MultipleChoice;
-
-
-const questions = [
-    {
-        question: 'What is the capital of France?',
-        type: 'radio',
-        options: ['Paris', 'Berlin', 'London', 'Rome'],
-        answer: 'Paris',
-    },
-    {
-        question: 'Which planets are considered gas giants? (Select all that apply)',
-        type: 'checkbox',
-        options: ['Venus', 'Mars', 'Jupiter', 'Saturn'],
-        answer: ['Jupiter', 'Saturn'],
-    },
-    {
-        question: 'Who is the CEO of Tesla?',
-        type: 'input',
-        answer: 'Elon Musk',
-    },
-    {
-        question: 'Share your feedback about this quiz:',
-        type: 'textarea',
-        answer: '',
-    },
-    // Add more questions here
-];

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Quiz.css';
 
 function TwoOptions() {
 
@@ -28,6 +29,7 @@ function TwoOptions() {
                                     <li key={index}>
                                         <input
                                             type="radio"
+                                            id={`question${questionIndex}_option${index}`}
                                             name={`question${questionIndex}`}
                                             value={option}
                                             checked={answers[questionIndex] === option}
@@ -35,7 +37,9 @@ function TwoOptions() {
                                                 handleAnswerSelection(questionIndex, option)
                                             }
                                         />
-                                        {option}
+                                        <label htmlFor={`question${questionIndex}_option${index}`}>
+                                            {option}
+                                        </label>
                                     </li>
                                 ))}
                             </ul>
@@ -54,19 +58,19 @@ const questions = [
     {
         title: 'Pim knipt al 10 jaar Nynkes hoofdhaar',
         type: 'radio',
-        q_options: ['niet waar', 'waar'],
+        q_options: ['✗ niet waar', '✓ waar'],
         answer: 'waar',
     },
     {
         title: 'De aarde is plat',
         type: 'radio',
-        q_options: ['niet waar', 'waar'],
+        q_options: ['✗ niet waar', '✓ waar'],
         answer: 'niet waar',
     },
     {
         title: 'Water kookt bij 100 graden Celsius',
         type: 'radio',
-        q_options: ['niet waar', 'waar'],
+        q_options: ['✗ niet waar', '✓ waar'],
         answer: 'waar',
     },
 ];

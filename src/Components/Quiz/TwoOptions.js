@@ -3,7 +3,7 @@ import './Quiz.css';
 
 function TwoOptions() {
 
-    const [currentQuestion, setCurrentQuestion] = useState(0);
+    // const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
 
 

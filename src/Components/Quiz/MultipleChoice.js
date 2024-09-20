@@ -59,24 +59,24 @@ function MultipleChoice() {
                             <h3>{question.title} <strong>{question.focused_word}</strong></h3>
 
                             <ul>
-                                {question.q_options.map((option, index) => (
+                                {question.q_options.map((q_option, index) => (
                                     <li key={index}>
                                         <input
                                             type="checkbox"
                                             id={`question${questionIndex}_option${index}`}
                                             name={`question${questionIndex}`}
-                                            value={option}
+                                            value={q_option}
                                             checked={
                                                 answers[questionIndex] &&
-                                                answers[questionIndex].includes(option)
+                                                answers[questionIndex].includes(q_option)
                                             }
                                             onChange={() =>
-                                                handleAnswerSelection(questionIndex, option)
+                                                handleAnswerSelection(questionIndex, q_option)
                                             }
                                         />
                                         {/* Label koppelen aan de input via de id */}
                                         <label htmlFor={`question${questionIndex}_option${index}`}>
-                                            {option}
+                                            {q_option}
                                         </label>
                                     </li>
                                 ))}

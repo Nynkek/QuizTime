@@ -197,5 +197,25 @@ h3 strong {
     background-color: var(--lightPurple)
 }
 
-/* quiz-match-values */
-.quiz-match-values {}
+/* MatchValues */
+.droppable-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.droppable-area {
+    width: 220px;
+    min-height: 200px;
+    border: 1px solid black;
+    padding: 8px;
+    margin: 8px;
+    background-color: lightgrey;
+}
+
+.match-value-item {
+    width: 200px;
+    border: 1px solid grey;
+    margin-bottom: 8px;
+    background-color: lightblue;
+    padding: 8px;
+}

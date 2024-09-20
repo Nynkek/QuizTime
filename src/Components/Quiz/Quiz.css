@@ -1,7 +1,26 @@
+.quiz-container {
+    width: 100%;
+    border: 1px solid var(--lighterPurple);
+    transition: background-color 0.3s ease;
+    border-radius: var(--borderRadius);
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
 /* TwoOptions.css */
 .puzzle-two-options {
     width: 100%;
     margin: 20px 0;
+}
+
+.puzzle-two-options h3 {
+    font-family: 'Alegreya sans';
+    font-weight: 500;
+    padding-bottom: 1em;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .puzzle-two-options ul {
@@ -9,12 +28,14 @@
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+
 }
 
 .puzzle-two-options li {
     flex: 1;
-    margin: 10px;
+    margin: 1%;
+    font-weight: 500;
+    font-size: 1em;
 }
 
 .puzzle-two-options li input[type="radio"] {
@@ -31,7 +52,7 @@
     color: var(--darkBlack);
     border: 1px solid var(--darkestPurple);
     transition: background-color 0.3s ease;
-    border-radius: 8px;
+    border-radius: var(--borderRadius);
 }
 
 .puzzle-two-options li input[type="radio"]:checked+label {
@@ -41,7 +62,7 @@
 }
 
 /* TwoOptions.css */
-.puzzle-multiple-choice h3 strong {
+h3 strong {
     font-size: 2em;
 }
 
@@ -76,7 +97,7 @@
     color: var(--darkBlack);
     border: 1px solid var(--darkestPurple);
     transition: background-color 0.3s ease;
-    border-radius: 8px;
+    border-radius: var(--borderRadius);
 }
 
 .puzzle-multiple-choice li input[type="checkbox"]:checked+label {
@@ -84,4 +105,94 @@
     color: var(--darkBlack);
     border: 1px solid var(--darkestPurple);
 
+}
+
+/* Stijlen voor de Drag & Drop lijst */
+.quiz-drag-and-drop-list {
+    text-align: center;
+    width: 100%;
+}
+
+.quiz-drag-and-drop-list .quiz-container {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+.quiz-container .question {
+    flex-grow: 6;
+    /* Geeft de question 4/5e van de ruimte */
+    background-color: transparent;
+    padding: 10px;
+}
+
+.quiz-container .arrow {
+    flex-grow: 1;
+    /* Geeft de arrow 1/5e van de ruimte */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: none;
+    padding: 1px;
+
+}
+
+/* Pijl naar boven */
+
+.quiz-container .arrow-text-top {
+    padding-top: 6em;
+
+}
+
+.quiz-container .arrow-top {
+
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 15px solid black;
+    padding-top: 1em;
+
+
+}
+
+.quiz-container .arrow-bottom {
+
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 15px solid black;
+    padding-bottom: 1em;
+
+}
+
+.arrow-line {
+    width: 2px;
+    height: 100%;
+    background-color: black;
+}
+
+
+.droppable {
+    padding: 8px;
+    width: 100%;
+}
+
+.draggable {
+    user-select: none;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+    transition: background-color 0.3s ease;
+    border-radius: var(--borderRadius);
+    margin-bottom: 10px;
+
+}
+
+.draggable.isDragging {
+    background-color: var(--lightPurple)
 }

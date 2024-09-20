@@ -5,7 +5,7 @@
     height: 500px;
     height: 50vh;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
 }
 
 
@@ -28,11 +28,19 @@ h1 {
 }
 
 .content {
-    padding-left: 5%;
-    width: 90%;
+    width: 95%;
     font-size: 1.3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .content ol {
     padding-left: 1em;
+}
+
+.link-next-page {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }

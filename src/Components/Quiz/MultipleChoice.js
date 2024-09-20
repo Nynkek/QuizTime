@@ -56,31 +56,33 @@ function MultipleChoice() {
                     {/* Vraag wordt pas zichtbaar zodra de vorige vraag is beantwoord */}
                     {questionIndex === 0 || hasAnsweredQuestion(questionIndex - 1) ? (
                         <>
-                            <h3>{question.title} <strong>{question.focused_word}</strong></h3>
+                            <div className='quiz-container'>
 
-                            <ul>
-                                {question.q_options.map((q_option, index) => (
-                                    <li key={index}>
-                                        <input
-                                            type="checkbox"
-                                            id={`question${questionIndex}_option${index}`}
-                                            name={`question${questionIndex}`}
-                                            value={q_option}
-                                            checked={
-                                                answers[questionIndex] &&
-                                                answers[questionIndex].includes(q_option)
-                                            }
-                                            onChange={() =>
-                                                handleAnswerSelection(questionIndex, q_option)
-                                            }
-                                        />
-                                        {/* Label koppelen aan de input via de id */}
-                                        <label htmlFor={`question${questionIndex}_option${index}`}>
-                                            {q_option}
-                                        </label>
-                                    </li>
-                                ))}
-                            </ul>
+                                <h3>{question.title}</h3> <h3><strong>{question.focused_word}</strong></h3>
+
+                                <ul>
+                                    {question.q_options.map((q_option, index) => (
+                                        <li key={index}>
+                                            <input
+                                                type="checkbox"
+                                                id={`question${questionIndex}_option${index}`}
+                                                name={`question${questionIndex}`}
+                                                value={q_option}
+                                                checked={
+                                                    answers[questionIndex] &&
+                                                    answers[questionIndex].includes(q_option)
+                                                }
+                                                onChange={() =>
+                                                    handleAnswerSelection(questionIndex, q_option)
+                                                }
+                                            />
+                                            {/* Label koppelen aan de input via de id */}
+                                            <label htmlFor={`question${questionIndex}_option${index}`}>
+                                                {q_option}
+                                            </label>
+                                        </li>
+                                    ))}
+                                </ul></div>
                         </>
                     ) : null}
                 </div>

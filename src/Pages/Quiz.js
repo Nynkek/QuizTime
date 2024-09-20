@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import './Pages.css';
 import TwoOptions from "../Components/Quiz/TwoOptions";
 import MultipleChoice from '../Components/Quiz/MultipleChoice';
+import ListReorder from '../Components/Quiz/ListReorder';
 
 
 
@@ -22,6 +23,7 @@ function Quiz() {
                     <TwoOptions />
                     <hr />
                     <MultipleChoice />
+                    <ListReorder />
 
 
                 </div>

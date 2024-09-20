@@ -11,6 +11,7 @@
   --darkerPink: #EFB8C8;
   --errorRed: #B3261E;
   --white: #E5E5E5;
+  --borderRadius: 18px;
 }
 
 
@@ -94,14 +95,13 @@ h3 {
 
 .btn-next-page {
   background-color: var(--darkBlack);
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 2em;
-  margin-left: 5%;
   color: var(--white);
   padding: 2ch;
+  margin-left: 5%;
   width: 90%;
   font-size: 1.4em;
-  border-radius: 8px;
+  border-radius: var(--borderRadius);
   border: none;
-  align-self: center;
 }

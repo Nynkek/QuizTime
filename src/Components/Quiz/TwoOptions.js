@@ -3,7 +3,6 @@ import './Quiz.css';
 
 function TwoOptions() {
 
-    // const [currentQuestion, setCurrentQuestion] = useState(0);
     const [answers, setAnswers] = useState([]);
 
 
@@ -22,27 +21,30 @@ function TwoOptions() {
                 <div key={questionIndex}>
                     {questionIndex === 0 || answers[questionIndex - 1] ? (
                         <>
-                            <h3>{question.title}</h3>
+                            <div className='quiz-container'>
 
-                            <ul>
-                                {question.q_options.map((option, index) => (
-                                    <li key={index}>
-                                        <input
-                                            type="radio"
-                                            id={`question${questionIndex}_option${index}`}
-                                            name={`question${questionIndex}`}
-                                            value={option}
-                                            checked={answers[questionIndex] === option}
-                                            onChange={() =>
-                                                handleAnswerSelection(questionIndex, option)
-                                            }
-                                        />
-                                        <label htmlFor={`question${questionIndex}_option${index}`}>
-                                            {option}
-                                        </label>
-                                    </li>
-                                ))}
-                            </ul>
+                                <h3>{question.title}</h3>
+
+                                <ul>
+                                    {question.q_options.map((option, index) => (
+                                        <li key={index}>
+                                            <input
+                                                type="radio"
+                                                id={`question${questionIndex}_option${index}`}
+                                                name={`question${questionIndex}`}
+                                                value={option}
+                                                checked={answers[questionIndex] === option}
+                                                onChange={() =>
+                                                    handleAnswerSelection(questionIndex, option)
+                                                }
+                                            />
+                                            <label htmlFor={`question${questionIndex}_option${index}`}>
+                                                {option}
+                                            </label>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                         </>
                     ) : null}
                 </div>

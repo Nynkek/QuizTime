@@ -1,3 +1,36 @@
+.title-screen {
+    font-size: 5em;
+    text-align: center;
+}
+
+
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-container button {
+    padding: 20px;
+    width: 80%;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: var(--purple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+
+}
+
+.btn-container button.selected {
+    background-color: var(--lightPurple);
+    color: var(--darkBlack);
+    border: 1px solid var(--darkestPurple);
+}
+
 .content-page {
     display: flex;
     flex-direction: column;
@@ -9,15 +42,29 @@
 }
 
 
-h1 {
-    padding-top: 2em;
+.page-title {
+    font-size: 2em;
     text-align: center;
+    padding-bottom: 1em;
 }
 
 .circle-bg:before {
     content: "";
     position: absolute;
     top: -20vw;
+    left: 50%;
+    width: 100vw;
+    height: 100vw;
+    background-color: var(--fuschia);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.low-circle-bg:before {
+    content: "";
+    position: absolute;
+    top: 10vh;
     left: 50%;
     width: 100vw;
     height: 100vw;

@@ -68,7 +68,7 @@ h3 strong {
 
 .puzzle-multiple-choice {
     width: 100%;
-    margin: 20px 0;
+    margin: 10px 0;
     text-align: center;
 }
 
@@ -111,6 +111,8 @@ h3 strong {
 .quiz-drag-and-drop-list {
     text-align: center;
     width: 100%;
+    margin: 10px 0;
+
 }
 
 .quiz-drag-and-drop-list .quiz-container {
@@ -123,14 +125,12 @@ h3 strong {
 
 .quiz-container .question {
     flex-grow: 6;
-    /* Geeft de question 4/5e van de ruimte */
     background-color: transparent;
     padding: 10px;
 }
 
 .quiz-container .arrow {
     flex-grow: 1;
-    /* Geeft de arrow 1/5e van de ruimte */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -196,3 +196,6 @@ h3 strong {
 .draggable.isDragging {
     background-color: var(--lightPurple)
 }
+
+/* quiz-match-values */
+.quiz-match-values {}

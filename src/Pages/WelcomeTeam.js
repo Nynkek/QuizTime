@@ -36,7 +36,7 @@ function WelcomeTeam() {
                     </ol>
 
                 </div>
-                <Link to="/quiz" className='link-next-page'>
+                <Link to="/quiz1" className='link-next-page'>
 
                     <button type='button' className='btn-next-page'>Start quiz &#8594; </button>
                 </Link>

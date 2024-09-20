@@ -87,13 +87,8 @@ function MultipleChoice() {
                     ) : null}
                 </div>
             ))}
-            {/* Eventuele controle knop of submit kan hier worden geplaatst */}
-            <button
-                onClick={() => console.log(answers)}
-                className={'btn-next-page'}
-            >
-                Controleer Antwoorden
-            </button>
+
+
         </div>
     );
 }

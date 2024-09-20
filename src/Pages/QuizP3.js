@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import Header from "../Components/Header/Header";
 import { Link } from "react-router-dom";
 import './Pages.css';
-import TwoOptions from "../Components/Quiz/TwoOptions";
-import MultipleChoice from '../Components/Quiz/MultipleChoice';
 import ListReorder from '../Components/Quiz/ListReorder';
 
 
 
-function Quiz() {
+function QuizP3() {
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -19,15 +17,13 @@ function Quiz() {
             <Header />
             <div className="content-page">
                 <div className="content">
-                    <h1>Quiz</h1>
-                    <TwoOptions />
-                    <hr />
-                    <MultipleChoice />
+
+
                     <ListReorder />
 
 
                 </div>
-                <Link to="/" className='link-next-page'>
+                <Link to="/quiz4" className='link-next-page'>
                     <button type='button' className='btn-next-page'>Submit &#8594; </button>
                 </Link>
             </div>
@@ -35,4 +31,4 @@ function Quiz() {
     );
 }
 
-export default Quiz;
+export default QuizP3;

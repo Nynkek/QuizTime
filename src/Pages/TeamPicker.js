@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
-import './TeamPicker.css';
 import './Pages.css';
 
 function TeamPicker() {
-    const teams = ["Team A", "Team B", "Team C", "Team D", "Team E"];
+    const teams = ["Team Alpa", "Team Beta", "Team Cetra", "Team Deltra", "Team Echo"];
     const [selectedTeam, setSelectedTeam] = useState("");
 
     const handleTeamSelect = (team) => {
@@ -26,7 +25,7 @@ function TeamPicker() {
     return (
         <>
             <div className='.content-page'>
-                <h1 className='circle-bg'>Kies je team:</h1>
+                <h1 className='circle-bg page-title'>Kies je team:</h1>
                 <div className="btn-container">
                     {teams.map((team, index) => (
                         <button

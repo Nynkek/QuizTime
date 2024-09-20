@@ -26,6 +26,10 @@
   box-sizing: border-box;
 }
 
+a:any-link {
+  text-decoration: none;
+}
+
 body {
   font-family: 'Alegreya Sans', sans-serif;
   font-size: 1.0em;
@@ -47,7 +51,7 @@ h5 {
 }
 
 h1 {
-  padding-bottom: 1em;
+  padding-top: 0.4em;
 }
 
 h2 {

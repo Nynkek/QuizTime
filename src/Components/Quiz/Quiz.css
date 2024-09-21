@@ -238,7 +238,6 @@ h3 strong {
     display: flex;
     flex-direction: row;
     gap: 5px;
-    border: 1px solid red;
     justify-content: space-between;
     width: 100%;
 }

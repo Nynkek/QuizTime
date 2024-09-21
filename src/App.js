@@ -8,6 +8,7 @@ import QuizP2 from './Pages/QuizP2';
 import QuizP3 from './Pages/QuizP3';
 import QuizP4 from './Pages/QuizP4';
 import QuizP1End from './Pages/QuizP1End';
+import ShareScore from './Pages/ShareScore';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/quiz2' element={<QuizP2 />} />
           <Route path='/quiz3' element={<QuizP3 />} />
           <Route path='/quiz4' element={<QuizP4 />} />
+          <Route path='/share-score' element={<ShareScore />} />
 
 
         </Routes>

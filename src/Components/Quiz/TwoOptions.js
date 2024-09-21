@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import './Quiz.css';
 import { useNavigate } from 'react-router-dom';
+import { ScoreContext } from '../../Context/ScoreProvider';
+
 
 function TwoOptions() {
     const [answers, setAnswers] = useState([]);
     const [errors, setErrors] = useState([]);
-    const [score, setScore] = useState(parseInt(localStorage.getItem('quizScore'), 10)); // Nieuwe state om de score bij te houden
+    const { score, setScore } = useContext(ScoreContext); // Gebruik de context
 
     // Ophalen van antwoorden en score bij page refresh
     useEffect(() => {
         const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers')) || [];
         setAnswers(savedAnswers);
-
-        const savedScore = parseInt(localStorage.getItem('quizScore'), 10) || 0;
-        setScore(savedScore);
-        window.dispatchEvent(new Event('quizScore'))
     }, []);
 
     // Antwoorden opslaan in localStorage
@@ -22,11 +20,6 @@ function TwoOptions() {
         localStorage.setItem('quizAnswers', JSON.stringify(answers));
     }, [answers]);
 
-    // Score opslaan in localStorage
-    useEffect(() => {
-        console.log(score + "ikbenhier");
-        localStorage.setItem('quizScore', score);
-    }, [score]);
 
     const handleAnswerSelection = (questionIndex, selectedAnswer) => {
         const updatedAnswers = [...answers];
@@ -57,7 +50,6 @@ function TwoOptions() {
         setScore(newScore); // Update de score in de state
 
         if (newErrors.every(error => error === false)) {
-            localStorage.setItem('quizScore', newScore);
             navigate('/quiz1end')
         }
 
@@ -100,10 +92,7 @@ function TwoOptions() {
                     ) : null}
                 </div>
             ))}
-
             <h2>Score: {score}</h2> {/* Toon de huidige score */}
-
-
             <button type='button' className='btn-next-page' disabled={!allAnswered}
                 onClick={checkAnswers}>Submit &#8594; </button>
 

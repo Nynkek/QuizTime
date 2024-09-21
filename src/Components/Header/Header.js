@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ScoreContext } from '../../Context/ScoreProvider';
+
 import "./header.css";
 
 function Header() {
     const [selectedTeam, setSelectedTeam] = useState("");
-    const [score, setScore] = useState(parseInt(localStorage.getItem('quizScore'), 10));
-
+    const { score } = useContext(ScoreContext); // Gebruik de context
 
     useEffect(() => {
         const savedTeam = localStorage.getItem("selectedTeam");
         if (savedTeam) {
             setSelectedTeam(savedTeam);
         }
-        const savedScore = parseInt(localStorage.getItem('quizScore'), 10);
-        if (savedScore) {
-            setScore(savedScore);
-        }
-
-    }, [score]);
-
-
+    }, []);
 
     return (
         <>
@@ -31,7 +25,6 @@ function Header() {
                     Score: {score}
                 </div>
             </header>
-
         </>
     );
 }

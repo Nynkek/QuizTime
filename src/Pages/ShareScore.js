@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import html2canvas from 'html2canvas';
 import './Pages.css';
 import { Link } from 'react-router-dom';
+import { ScoreContext } from '../Context/ScoreProvider';
 
 
 function ShareScore() {
 
     const [selectedTeam, setSelectedTeam] = useState("");
+    const { score } = useContext(ScoreContext); // Gebruik de context
+
 
     useEffect(() => {
         const savedTeam = localStorage.getItem("selectedTeam");
@@ -38,7 +41,7 @@ function ShareScore() {
                 try {
                     await navigator.share({
                         title: 'Quiz Score',
-                        text: 'We hebben de quiz afgerond, dit is de score van' + { selectedTeam },
+                        text: `We hebben de quiz afgerond, ${score} is de score van ${selectedTeam}`,
                         files: [file]  // Deel de afbeelding
                     });
                     console.log('Succesvol gedeeld!');
@@ -65,7 +68,7 @@ function ShareScore() {
                 <div className='div4'>Totaal fouten: </div>
                 <div className='div5'> 4</div>
                 <div className='div6'>Totale Score:</div>
-                <div className='div7'>12323 punten</div>
+                <div className='div7'>{score} punten</div>
                 <div className='div8'>Jullie krijgen het favorieten Frieze woord van Lina als cadeautje voor het meedoen: Gearfetsje! </div>
             </div>
 

@@ -9,26 +9,29 @@ import QuizP3 from './Pages/QuizP3';
 import QuizP4 from './Pages/QuizP4';
 import QuizP1End from './Pages/QuizP1End';
 import ShareScore from './Pages/ShareScore';
+import { ScoreProvider } from './Context/ScoreProvider';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-        <Routes>
-          <Route path='/' element={<Intro />} />
-          <Route path='/teampicker' element={<TeamPicker />} />
-          <Route path='/welcome-team' element={<WelcomeTeam />} />
-          <Route path='/quiz1' element={<QuizP1 />} />
-          <Route path='/quiz1end' element={<QuizP1End />} />
-          <Route path='/quiz2' element={<QuizP2 />} />
-          <Route path='/quiz3' element={<QuizP3 />} />
-          <Route path='/quiz4' element={<QuizP4 />} />
-          <Route path='/share-score' element={<ShareScore />} />
+    <ScoreProvider>
+      <div className="App">
+        <div className="container">
+          <Routes>
+            <Route path='/' element={<Intro />} />
+            <Route path='/teampicker' element={<TeamPicker />} />
+            <Route path='/welcome-team' element={<WelcomeTeam />} />
+            <Route path='/quiz1' element={<QuizP1 />} />
+            <Route path='/quiz1end' element={<QuizP1End />} />
+            <Route path='/quiz2' element={<QuizP2 />} />
+            <Route path='/quiz3' element={<QuizP3 />} />
+            <Route path='/quiz4' element={<QuizP4 />} />
+            <Route path='/share-score' element={<ShareScore />} />
 
 
-        </Routes>
+          </Routes>
+        </div>
       </div>
-    </div>
+    </ScoreProvider>
   );
 }
 

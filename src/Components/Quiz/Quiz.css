@@ -61,6 +61,10 @@
     border: 1px solid var(--darkestPurple);
 }
 
+.error {
+    color: var(--errorRed);
+}
+
 /* TwoOptions.css */
 h3 strong {
     font-size: 2em;

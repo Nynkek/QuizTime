@@ -3,13 +3,22 @@ import "./header.css";
 
 function Header() {
     const [selectedTeam, setSelectedTeam] = useState("");
+    const [score, setScore] = useState(parseInt(localStorage.getItem('quizScore'), 10));
+
 
     useEffect(() => {
         const savedTeam = localStorage.getItem("selectedTeam");
         if (savedTeam) {
             setSelectedTeam(savedTeam);
         }
-    }, []);
+        const savedScore = parseInt(localStorage.getItem('quizScore'), 10);
+        if (savedScore) {
+            setScore(savedScore);
+        }
+
+    }, [score]);
+
+
 
     return (
         <>
@@ -19,7 +28,7 @@ function Header() {
                     <p>vraag 1</p>
                 </div>
                 <div className="score">
-                    45 punten
+                    Score: {score}
                 </div>
             </header>
 

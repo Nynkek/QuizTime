@@ -118,3 +118,7 @@ h3 {
   border-radius: var(--borderRadius);
   border: none;
 }
+
+.btn-next-page:disabled {
+  opacity: 0.2;
+}

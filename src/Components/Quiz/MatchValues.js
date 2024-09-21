@@ -8,12 +8,14 @@ const questions_drag_and_drop = [
         title: "Welk huisdier hoort bij wie?",
         type: "drag_and_drop",
         question_options: ["Tanja", "Lisa", "Noor", "Wytze"],
+        answer_options: ["bruin", "blauw", "groen", "grijs"],
         answer_ordered: ["Tanja", "Wytze", "Noor", "Lisa"],
     },
     {
         title: "Welke oogkleur hoort bij wie?",
         type: "drag_and_drop",
         question_options: ["Nynke", "Margriet", "Jan", "Teun"],
+        answer_options: ["bruin", "blauw", "groen", "grijs"],
         answer_ordered: ["Nynke", "Teun", "Jan", "Margriet"],
     },
 ];
@@ -69,7 +71,8 @@ function MatchValuesApp() {
         droppable1: questions_drag_and_drop[0].question_options,
         droppable2: [],
         droppable3: [],
-        droppable4: []
+        droppable4: [],
+        droppable5: []
     });
 
     function onDragEnd(result) {
@@ -111,13 +114,39 @@ function MatchValuesApp() {
         <div>
             <h2>{questions_drag_and_drop[0].title}</h2>
             <DragDropContext onDragEnd={onDragEnd}>
-                <div className="droppable-container">
-                    {["droppable1", "droppable2", "droppable3", "droppable4"].map(
+
+
+                <div className="droppable-container droppable-container-answer-options">
+                    {["droppable2", "droppable3", "droppable4", "droppable5"].map(
+                        (droppableId) => (
+                            <Droppable key={droppableId} droppableId={droppableId}>
+                                {(provided) => (
+                                    <div className='droppable-container-answer-options-container'>
+                                        <div
+                                            className="droppable-area droppable-area-answer-options"
+                                            ref={provided.innerRef}
+                                            {...provided.droppableProps}
+                                        >
+                                            <MatchValuesList values={state[droppableId]} />
+                                            {provided.placeholder}
+                                        </div>
+                                        <div className='droppable-area-descripton'>
+                                            {questions_drag_and_drop[0].answer_options[1]}
+                                        </div>
+                                    </div>
+                                )}
+                            </Droppable>
+                        )
+                    )}
+                </div>
+
+                <div className="droppable-container droppable-container-names">
+                    {["droppable1"].map(
                         (droppableId) => (
                             <Droppable key={droppableId} droppableId={droppableId}>
                                 {(provided) => (
                                     <div
-                                        className="droppable-area"
+                                        className="droppable-area droppable-area-names"
                                         ref={provided.innerRef}
                                         {...provided.droppableProps}
                                     >
@@ -129,6 +158,7 @@ function MatchValuesApp() {
                         )
                     )}
                 </div>
+
             </DragDropContext>
         </div>
     );

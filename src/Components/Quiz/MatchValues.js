@@ -37,6 +37,12 @@ const reorder = (list, startIndex, endIndex) => {
 
 // Functie om items van het ene gebied naar het andere te verplaatsen
 const move = (source, destination, droppableSource, droppableDestination) => {
+    // Check if source or destination is undefined
+    if (!source || !destination) {
+        console.error("Source or destination is undefined");
+        return {};
+    }
+
     const sourceClone = Array.from(source);
     const destClone = Array.from(destination);
     const [removed] = sourceClone.splice(droppableSource.index, 1);
@@ -48,6 +54,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
 
     return result;
 };
+
+
 
 function MatchValues({ value, index }) {
     return (
@@ -109,6 +117,12 @@ function MatchValuesApp() {
 
         const currentState = states[currentQuestionIndex];
 
+        // Controleer of de droppableId's bestaan
+        if (!currentState[source.droppableId] || !currentState[destination.droppableId]) {
+            console.error("DroppableId does not exist in the current state");
+            return;
+        }
+
         // Als we binnen hetzelfde gebied slepen
         if (source.droppableId === destination.droppableId) {
             const values = reorder(
@@ -137,6 +151,7 @@ function MatchValuesApp() {
             setStates(states.map((s, idx) => (idx === currentQuestionIndex ? newState : s)));
         }
     }
+
 
     return (
         <div>
@@ -191,6 +206,7 @@ function MatchValuesApp() {
                     );
                 })}
             </DragDropContext>
+
         </div>
     );
 }

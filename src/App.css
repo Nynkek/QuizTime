@@ -3,6 +3,7 @@
 
 :root {
   --purple: #AEAFF7;
+  --darkPurple: #7879F1;
   --darkestPurple: #21005D;
   --lightPurple: #dac6fa;
   --lighterPurple: #EADDFF;
@@ -11,6 +12,14 @@
   --darkerPink: #EFB8C8;
   --errorRed: #B3261E;
   --white: #E5E5E5;
+  --orange: #F09E54;
+  --lightOrange: #FBE2CC;
+  --pink: #EF5DA8;
+  --lightPink: #FCDDEC;
+  --blue: #A0E3E2;
+  --brown: #954441;
+
+
   --borderRadius: 18px;
 }
 

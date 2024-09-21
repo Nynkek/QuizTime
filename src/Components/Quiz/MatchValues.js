@@ -51,11 +51,8 @@ const move = (source, destination, droppableSource, droppableDestination) => {
     const result = {};
     result[droppableSource.droppableId] = sourceClone;
     result[droppableDestination.droppableId] = destClone;
-
     return result;
 };
-
-
 
 function MatchValues({ value, index }) {
     return (
@@ -75,7 +72,10 @@ function MatchValues({ value, index }) {
 }
 
 const MatchValuesList = React.memo(function MatchValuesList({ values }) {
-    return values.map((value, index) => (
+    // Zorg ervoor dat values altijd een array is (gebruik [] als fallback)
+    const safeValues = values || [];
+
+    return safeValues.map((value, index) => (
         <MatchValues value={value} index={index} key={`${value}-${index}`} />
     ));
 });
@@ -84,25 +84,34 @@ function MatchValuesApp() {
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0); // Index van de huidige vraag
     const [visibleQuestions, setVisibleQuestions] = useState([0]); // Bijhouden van de zichtbare vragen
     const [states, setStates] = useState(() =>
-        questions_drag_and_drop.map(q => {
-            const state = { droppable1: q.question_options };
+        questions_drag_and_drop.map((q, questionIndex) => {
+            const state = { [`droppable-${questionIndex}-1`]: q.question_options }; // Vraag specifieke droppable (namen)
             q.answer_options.forEach((_, idx) => {
-                state[`droppable${idx + 2}`] = [];
+                state[`droppable-${questionIndex}-${idx + 2}`] = []; // Antwoorden gebieden
             });
             return state;
         })
     );
 
-    // Controleer of alle droppable vakken van een vraag gevuld zijn
     useEffect(() => {
         const currentState = states[currentQuestionIndex];
+
         const allFilled = Object.keys(currentState)
-            .filter(key => key !== "droppable1")
+            .filter(key => key !== `droppable-${currentQuestionIndex}-1`)
             .every(key => currentState[key].length > 0);
 
         // Als alles is gevuld en er zijn nog vragen over, toon de volgende vraag
         if (allFilled && currentQuestionIndex < questions_drag_and_drop.length - 1) {
             setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+            // Controleer of de volgende vraag een correct geïnitialiseerde state heeft
+            const nextQuestionState = states[currentQuestionIndex + 1] || {};
+            const initializedState = {
+                ...nextQuestionState,
+                [`droppable-${currentQuestionIndex + 1}-1`]: nextQuestionState[`droppable-${currentQuestionIndex + 1}-1`] || [],
+            };
+
+            setStates(states.map((s, idx) => idx === currentQuestionIndex + 1 ? initializedState : s));
             setVisibleQuestions([...visibleQuestions, currentQuestionIndex + 1]);
         }
     }, [states, currentQuestionIndex, visibleQuestions]);
@@ -152,7 +161,6 @@ function MatchValuesApp() {
         }
     }
 
-
     return (
         <div>
             <DragDropContext onDragEnd={onDragEnd}>
@@ -176,7 +184,7 @@ function MatchValuesApp() {
                                                     ref={provided.innerRef}
                                                     {...provided.droppableProps}
                                                 >
-                                                    <MatchValuesList values={state[`droppable${index + 2}`]} />
+                                                    <MatchValuesList values={state[`droppable-${questionIndex}-${index + 2}`]} />
                                                     {provided.placeholder}
                                                 </div>
                                                 <div className='droppable-area-description'>
@@ -196,7 +204,7 @@ function MatchValuesApp() {
                                             ref={provided.innerRef}
                                             {...provided.droppableProps}
                                         >
-                                            <MatchValuesList values={state.droppable1} />
+                                            <MatchValuesList values={state[`droppable-${questionIndex}-1`]} />
                                             {provided.placeholder}
                                         </div>
                                     )}
@@ -206,7 +214,6 @@ function MatchValuesApp() {
                     );
                 })}
             </DragDropContext>
-
         </div>
     );
 }

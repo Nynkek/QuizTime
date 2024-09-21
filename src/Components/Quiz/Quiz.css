@@ -240,6 +240,7 @@ h3 strong {
     gap: 5px;
     justify-content: space-between;
     width: 100%;
+    min-height: 2em;
 }
 
 .match-value-item {

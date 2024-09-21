@@ -38,7 +38,7 @@ function ShareScore() {
                 try {
                     await navigator.share({
                         title: 'Quiz Score',
-                        text: 'Bekijk mijn score!',
+                        text: 'We hebben de quiz afgerond, dit is de score van' + { selectedTeam },
                         files: [file]  // Deel de afbeelding
                     });
                     console.log('Succesvol gedeeld!');

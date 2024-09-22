@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Header from '../Components/Header/Header';
-import { Link } from 'react-router-dom';
 import './Pages.css';
 import ListReorder from '../Components/Quiz/ListReorder';
 

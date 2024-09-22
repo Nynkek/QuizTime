@@ -94,7 +94,7 @@ function ListReorder() {
     };
 
     const checkAnswers = () => {
-        let tempScore = score;
+        let newScore = score;
         const newErrors = [];
 
         questions_drag_and_drop.forEach((question, index) => {
@@ -103,7 +103,7 @@ function ListReorder() {
             // Controleer of de gegeven antwoorden overeenkomen met de correcte antwoorden
             if (!arraysEqual(userAnswers, question.answer_order_indices)) {
                 newErrors[index] = true;
-                tempScore -= 5;
+                newScore -= 5;
             } else {
                 newErrors[index] = false;
             }
@@ -113,9 +113,9 @@ function ListReorder() {
 
         const allAnsweredCorrectly = newErrors.every(error => error === false);
         if (allAnsweredCorrectly) {
-            tempScore += questions_drag_and_drop.length * 10; // +10 per goed antwoord
+            newScore += questions_drag_and_drop.length * 10; // +10 per goed antwoord
         }
-        setScore(tempScore);
+        setScore(newScore);
 
         if (allAnsweredCorrectly) {
             navigate('/quiz4');

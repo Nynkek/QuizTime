@@ -3,30 +3,9 @@ import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { ScoreContext } from '../../Context/ScoreProvider';
 import { useNavigate } from 'react-router-dom';
 import "./Quiz.css"; // CSS importeren
+import { questions_drag_and_drop } from '../../Data/questions';
 
-const questions_drag_and_drop = [
-    {
-        title: "Welk huisdier hoort bij wie?",
-        type: "drag_and_drop",
-        question_options: ["Tanja", "Lisa", "Noor", "Wytze"],
-        answer_options: ["Kat", "Hond", "Kanarie", "Konijn"],
-        answer_ordered: [0, 1, 2, 3],
-    },
-    {
-        title: "Welke oogkleur hoort bij wie?",
-        type: "drag_and_drop",
-        question_options: ["Nynke", "Margriet", "Jan", "Teun"],
-        answer_options: ["bruin", "blauw", "groen", "grijs"],
-        answer_ordered: [0, 1, 2, 3],
-    },
-    {
-        title: "Welke auto is van wie?",
-        type: "drag_and_drop",
-        question_options: ["Nynke", "Margriet", "Jan", "Teun"],
-        answer_options: ["Geen", "Tesla", "Citroen", "Rammelbak"],
-        answer_ordered: [0, 1, 2, 3],
-    },
-];
+
 
 // Functie om een lijst opnieuw te ordenen binnen hetzelfde gebied
 const reorder = (list, startIndex, endIndex) => {

@@ -1,6 +1,7 @@
-import React, { useState, useContext, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import { ScoreContext } from '../../Context/ScoreProvider';
 import { useNavigate } from 'react-router-dom';
+import { questions_multiple_choice } from '../../Data/questions';
 
 function MultipleChoice({nextpage}) {
     const [answers, setAnswers] = useState({});
@@ -9,24 +10,6 @@ function MultipleChoice({nextpage}) {
 
     const { score, setScore } = useContext(ScoreContext);
     const navigate = useNavigate();
-
-    // Memoize the questions to prevent re-creation on every render
-    const questions_multiple_choice = useMemo(() => [
-        {
-            title: 'Van wie is de hobby:',
-            focused_word: 'borduren',
-            type: 'checkbox',
-            q_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
-            answer_index: [0], // Correcte index van het antwoord
-        },
-        {
-            title: 'Van wie is de hobby:',
-            focused_word: 'kogelstoten',
-            type: 'checkbox',
-            q_options: ['Nynke', 'Toes', 'Jan', 'Pim'],
-            answer_index: [1, 2], // Correcte index van het antwoord
-        },
-    ], []);
 
     // Laad antwoorden vanuit localStorage wanneer de component wordt geladen
     useEffect(() => {
@@ -71,7 +54,7 @@ function MultipleChoice({nextpage}) {
             hasAnsweredQuestion(questionIndex)
         );
         setAllAnswered(allAnsweredCheck);
-    }, [answers, hasAnsweredQuestion, questions_multiple_choice]);
+    }, [answers, hasAnsweredQuestion]);
 
     // Vergelijk arrays om te controleren of de gegeven antwoorden juist zijn
     const arraysEqual = (arr1, arr2) => {
@@ -147,7 +130,7 @@ function MultipleChoice({nextpage}) {
                                 {/* Toon foutmelding onder de vraag als deze fout is beantwoord */}
                                 {errors[questionIndex] && (
                                     <p className="error" >
-                                        Dit antwoord is fout, probeer opnieuw!
+                                        Dit antwoord is fout, probeer opnieuw! Er kunnen meerdere antwoorden goed zijn.
                                     </p>
                                 )}
                             </div>

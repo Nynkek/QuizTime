@@ -11,13 +11,13 @@ function TwoOptions() {
 
     // Ophalen van antwoorden en score bij page refresh
     useEffect(() => {
-        const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers')) || [];
+        const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers_2o')) || [];
         setAnswers(savedAnswers);
     }, []);
 
     // Antwoorden opslaan in localStorage
     useEffect(() => {
-        localStorage.setItem('quizAnswers', JSON.stringify(answers));
+        localStorage.setItem('quizAnswers_2o', JSON.stringify(answers));
     }, [answers]);
 
 

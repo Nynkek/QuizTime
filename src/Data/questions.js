@@ -115,6 +115,6 @@ export const questions_drag_and_drop = [
         type: "drag_and_drop",
         question_options: ["Sytske", "Sander", "Tessa", "Fokje"],
         answer_options: ["Fantastierijk", "Kikker", "Spectaculair", "Lekkerbek"],
-        answer_ordered: [1, 2, 0, 3],
+        answer_ordered: [2, 0, 1, 3],
     },
 ];

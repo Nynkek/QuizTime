@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import Header from "../Components/Header/Header";
-import { Link } from "react-router-dom";
 import './Pages.css';
 import MultipleChoice from '../Components/Quiz/MultipleChoice';
 
@@ -23,9 +22,7 @@ function QuizP2() {
 
 
                 </div>
-                < Link to="/quiz3" className='link-next-page' >
-                    <button type='button' className='btn-next-page' > Submit &#8594; </button>
-                </Link>
+
             </div>
         </>
     );

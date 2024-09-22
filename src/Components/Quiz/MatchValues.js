@@ -9,21 +9,21 @@ const questions_drag_and_drop = [
         type: "drag_and_drop",
         question_options: ["Tanja", "Lisa", "Noor", "Wytze"],
         answer_options: ["Kat", "Hond", "Kanarie", "Konijn"],
-        answer_ordered: ["Tanja", "Wytze", "Noor", "Lisa"],
+        answer_ordered: [0,2,3,1],
     },
     {
         title: "Welke oogkleur hoort bij wie?",
         type: "drag_and_drop",
         question_options: ["Nynke", "Margriet", "Jan", "Teun"],
         answer_options: ["bruin", "blauw", "groen", "grijs"],
-        answer_ordered: ["Nynke", "Teun", "Jan", "Margriet"],
+        answer_ordered: [1,2,3,0],
     },
     {
         title: "Welke auto is van wie?",
         type: "drag_and_drop",
         question_options: ["Nynke", "Margriet", "Jan", "Teun"],
         answer_options: ["Geen", "Tesla", "Citroen", "Rammelbak"],
-        answer_ordered: ["Nynke", "Teun", "Jan", "Margriet"],
+        answer_ordered: [3,2,1,0],
     },
 ];
 

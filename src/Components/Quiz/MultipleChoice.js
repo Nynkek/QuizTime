@@ -37,23 +37,23 @@ function MultipleChoice() {
     }, []);
 
     // Functie om antwoord voor een vraag op te slaan en in localStorage te bewaren
-    const handleAnswerSelection = (questionIndex, selectedAnswerIndex) => {
+    const handleAnswerSelection = (questionIndices, selectedAnswerIndex) => {
         const updatedAnswers = { ...answers };
 
         // Zorg ervoor dat de antwoorden voor deze vraag altijd een array zijn
-        if (!Array.isArray(updatedAnswers[questionIndex])) {
-            updatedAnswers[questionIndex] = [];
+        if (!Array.isArray(updatedAnswers[questionIndices])) {
+            updatedAnswers[questionIndices] = [];
         }
 
         // Check of het geselecteerde antwoord al is gekozen (toggle)
-        if (updatedAnswers[questionIndex].includes(selectedAnswerIndex)) {
+        if (updatedAnswers[questionIndices].includes(selectedAnswerIndex)) {
             // Deselecteren
-            updatedAnswers[questionIndex] = updatedAnswers[questionIndex].filter(
+            updatedAnswers[questionIndices] = updatedAnswers[questionIndices].filter(
                 (answer) => answer !== selectedAnswerIndex
             );
         } else {
             // Anders selecteren
-            updatedAnswers[questionIndex].push(selectedAnswerIndex);
+            updatedAnswers[questionIndices].push(selectedAnswerIndex);
         }
 
         setAnswers(updatedAnswers);

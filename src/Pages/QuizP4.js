@@ -24,9 +24,7 @@ function QuizP4() {
 
 
                 </div>
-                <Link to="/share-score" className='link-next-page'>
-                    <button type='button' className='btn-next-page'>Submit &#8594; </button>
-                </Link>
+              
             </div>
         </>
     );

@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect, useCallback, useMemo } from 're
 import { ScoreContext } from '../../Context/ScoreProvider';
 import { useNavigate } from 'react-router-dom';
 
-function MultipleChoice() {
+function MultipleChoice({nextpage}) {
     const [answers, setAnswers] = useState({});
     const [allAnswered, setAllAnswered] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -108,7 +108,7 @@ function MultipleChoice() {
         setScore(tempScore);
 
         if (newErrors.every(error => error === false)) {
-            navigate('/quiz1end');
+            navigate(nextpage);
         }
     };
 

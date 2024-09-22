@@ -2,126 +2,101 @@ import React, { useState, useEffect, useContext } from 'react';
 import './Quiz.css';
 import { useNavigate } from 'react-router-dom';
 import { ScoreContext } from '../../Context/ScoreProvider';
+import { questions_two_options } from '../../Data/questions';
 
+function TwoOptions({ nextpage }) {
+    const { score, setScore } = useContext(ScoreContext);
+    const navigate = useNavigate();
 
-function TwoOptions({nextpage}) {
-    const [answers, setAnswers] = useState([]);
+    const [answers, setAnswers] = useState(() => {
+        // Haal antwoorden op uit localStorage bij initiële render
+        return JSON.parse(localStorage.getItem('quizAnswers_2o')) || [];
+    });
+
     const [errors, setErrors] = useState([]);
-    const { score, setScore } = useContext(ScoreContext); // Gebruik de context
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(() => {
+        // Haal huidige vraagindex op uit localStorage bij initiële render
+        return parseInt(localStorage.getItem('quizCurrentQuestionIndex_2o'), 10) || 0;
+    });
 
-    // Ophalen van antwoorden en score bij page refresh
-    useEffect(() => {
-        const savedAnswers = JSON.parse(localStorage.getItem('quizAnswers_2o')) || [];
-        setAnswers(savedAnswers);
-    }, []);
-
-    // Antwoorden opslaan in localStorage
+    // Sla antwoorden op in localStorage bij elke update
     useEffect(() => {
         localStorage.setItem('quizAnswers_2o', JSON.stringify(answers));
     }, [answers]);
 
+    // Sla huidige vraagindex op in localStorage bij elke update
+    useEffect(() => {
+        localStorage.setItem('quizCurrentQuestionIndex_2o', currentQuestionIndex.toString());
+    }, [currentQuestionIndex]);
 
-    const handleAnswerSelection = (questionIndex, selectedAnswer) => {
+    const handleAnswerSelection = (questionIndex, selectedAnswerIndex) => {
         const updatedAnswers = [...answers];
-        updatedAnswers[questionIndex] = selectedAnswer;
+        updatedAnswers[questionIndex] = selectedAnswerIndex; // Sla de index van het geselecteerde antwoord op
         setAnswers(updatedAnswers);
+
+        // Verhoog de huidige vraagindex als er meer vragen zijn en de volgende vraag nog niet is beantwoord
+        if (questionIndex < questions_two_options.length - 1 && answers.length <= questionIndex + 1) {
+            setCurrentQuestionIndex(questionIndex + 1);
+        }
     };
 
     const checkAnswers = () => {
         const newErrors = [];
-        let newScore = score; // We beginnen met de huidige score
+        let newScore = score;
 
-        questions.forEach((question, index) => {
-            if (answers[index] !== question.answer) {
-                newErrors[index] = true;
-                newScore -= 5; // Elk fout antwoord kost -5 punten
-            } else {
-                newErrors[index] = false;
-            }
+        // Controleer alle antwoorden
+        questions_two_options.forEach((question, index) => {
+            const isCorrect = answers[index] === question.answer;
+            newErrors[index] = !isCorrect;
+            newScore += isCorrect ? 10 : -5; // +10 voor goed, -5 voor fout antwoord
         });
 
         setErrors(newErrors);
+        setScore(newScore);
 
-        // Als er geen fouten zijn, +10 per correct antwoord
-        if (newErrors.every(error => error === false)) {
-            newScore += questions.length * 10; // +10 per goed antwoord
+        // Ga door naar de volgende pagina als alle antwoorden correct zijn
+        if (newErrors.every(error => !error)) {
+            navigate(nextpage);
         }
-
-        setScore(newScore); // Update de score in de state
-
-        if (newErrors.every(error => error === false)) {
-            navigate(nextpage)
-        }
-
     };
 
-    const allAnswered = answers.length === questions.length && answers.every(answer => answer !== undefined);
-    const navigate = useNavigate();
-
+    const allAnswered = answers.length === questions_two_options.length && answers.every(answer => answer !== undefined);
 
     return (
         <div className='puzzle-two-options'>
-            {questions.map((question, questionIndex) => (
-                <div key={questionIndex}>
-                    {questionIndex === 0 || answers[questionIndex - 1] ? (
-                        <>
-                            <div className='quiz-container'>
-                                <h3>{question.title}</h3>
-                                <ul>
-                                    {question.q_options.map((option, index) => (
-                                        <li key={index}>
-                                            <input
-                                                type="radio"
-                                                id={`question${questionIndex}_option${index}`}
-                                                name={`question${questionIndex}`}
-                                                value={option}
-                                                checked={answers[questionIndex] === option}
-                                                onChange={() => handleAnswerSelection(questionIndex, option)}
-                                            />
-                                            <label htmlFor={`question${questionIndex}_option${index}`}>
-                                                {option}
-                                            </label>
-                                        </li>
-                                    ))}
-                                </ul>
-                                {errors[questionIndex] && (
-                                    <p className="error">Dit antwoord is fout, probeer opnieuw!</p>
-                                )}
-                            </div>
-                        </>
-                    ) : null}
-                </div>
+            {questions_two_options.map((question, questionIndex) => (
+                questionIndex <= currentQuestionIndex && (
+                    <div key={questionIndex} className='quiz-container'>
+                        <h3>{question.title}</h3>
+                        <ul>
+                            {question.q_options.map((option, optionIndex) => (
+                                <li key={optionIndex}>
+                                    <input
+                                        type="radio"
+                                        id={`question${questionIndex}_option${optionIndex}`}
+                                        name={`question${questionIndex}`}
+                                        value={optionIndex}
+                                        checked={answers[questionIndex] === optionIndex}
+                                        onChange={() => handleAnswerSelection(questionIndex, optionIndex)}
+                                    />
+                                    <label htmlFor={`question${questionIndex}_option${optionIndex}`}>
+                                        {option}
+                                    </label>
+                                </li>
+                            ))}
+                        </ul>
+                        {errors[questionIndex] && (
+                            <p className="error">Dit antwoord is fout, probeer opnieuw!</p>
+                        )}
+                    </div>
+                )
             ))}
-            <h2>Score: {score}</h2> {/* Toon de huidige score */}
-            <button type='button' className='btn-next-page' disabled={!allAnswered}
-                onClick={checkAnswers}>Submit &#8594; </button>
-
+            <h2>Score: {score}</h2>
+            <button type='button' className='btn-next-page' disabled={!allAnswered} onClick={checkAnswers}>
+                Submit &#8594;
+            </button>
         </div>
     );
 }
 
-
-
-
 export default TwoOptions;
-
-const questions = [
-    {
-        title: 'Pim knipt al 10 jaar Nynkes hoofdhaar',
-        type: 'radio',
-        q_options: ['✗ niet waar', '✓ waar'],
-        answer: '✓ waar',
-    },
-    {
-        title: 'De aarde is plat',
-        type: 'radio',
-        q_options: ['✗ niet waar', '✓ waar'],
-        answer: '✗ niet waar',
-    },
-    {
-        title: 'Water kookt bij 100 graden Celsius',
-        type: 'radio',
-        q_options: ['✗ niet waar', '✓ waar'],
-        answer: '✓ waar',
-    },
-];

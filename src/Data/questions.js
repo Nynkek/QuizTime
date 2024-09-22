@@ -67,13 +67,41 @@ export const questions_multiple_choice = [
 
 ];
 
+
+export const questions_reorder = [
+    {
+        title: 'Sorteer de volgende mensen op',
+        focused_word: 'Lengte',
+        type: 'drag_and_drop',
+        question_options: ['Elliott', 'Jouke', 'Margriet', 'Marlies'],
+        answer_order_indices: [1, 3, 2, 0],
+        options_measurement: ['Langst', 'Kortst']
+    },
+    {
+        title: 'Wie is er het langst',
+        focused_word: 'samen',
+        type: 'drag_and_drop',
+        question_options: ['Pim & Nynke', 'Fokje & Michiel', 'Hanna & Jouke', 'Corrie & Koos'],
+        answer_order_indices: [3, 0, 1, 2],
+        options_measurement: ['Langst', 'Kortst']
+    },
+    {
+        title: 'Zet de gebeurtenissen op',
+        focused_word: 'datum',
+        type: 'drag_and_drop',
+        question_options: ['Freerk en Marlies trouwen [1999]', 'Fokje wordt 20 jaar [1997]', 'Koos & Corrie trouwen [2002]', 'Nynke wordt geboren[1988]'],
+        answer_order_indices: [3, 1, 0, 2],
+        options_measurement: ['Oudst', 'Recent']
+    }
+];
+
 export const questions_drag_and_drop = [
     {
         title: "Welk huisdier hoort bij wie?",
         type: "drag_and_drop",
         question_options: ["Noor", "Jurjen", "Femke", "Jan"],
         answer_options: ["Kat, Mickey", "Kat, Muis", "Hond, Sparky", "Kat, de rode"],
-        answer_ordered: [0, 1, 2, 3],
+        answer_ordered: [1, 0, 2, 3],
     },
     {
         title: "Welke bijnaam hoort bij wie?",
@@ -87,25 +115,6 @@ export const questions_drag_and_drop = [
         type: "drag_and_drop",
         question_options: ["Sytske", "Sander", "Tessa", "Fokje"],
         answer_options: ["Fantastierijk", "Kikker", "Spectaculair", "Lekkerbek"],
-        answer_ordered: [0, 1, 2, 3],
-    },
-];
-
-export const questions_reorder = [
-    {
-        title: 'Sorteer de volgende mensen op',
-        focused_word: 'Lengte',
-        type: 'drag_and_drop',
-        question_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
-        answer_ordered: ['bruin', 'blauw', 'paars', 'groen'],
-        options_measurement: ['Langst', 'Kortst']
-    },
-    {
-        title: 'Wie is er het langst',
-        focused_word: 'samen',
-        type: 'drag_and_drop',
-        question_options: ['Pim & Nynke', 'Bugs & Lola', 'Jan & Hannie', 'Corrie & Koos'],
-        answer_ordered: ['Nynke & Nynke', 'Bugs & Lola', 'Jan & Hannie', 'Corrie & Koos'],
-        options_measurement: ['Langst', 'Kortst']
+        answer_ordered: [1, 2, 0, 3],
     },
 ];

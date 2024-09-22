@@ -4,26 +4,9 @@ import { ScoreContext } from '../../Context/ScoreProvider';
 import { useNavigate } from 'react-router-dom';
 
 import './Quiz.css';
+import { questions_reorder } from '../../Data/questions';
 
-const questions_drag_and_drop = [
-    {
-        title: 'Sorteer de volgende mensen op',
-        focused_word: 'Lengte',
-        type: 'drag_and_drop',
-        question_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
-        answer_order_indices: [3, 2, 1, 0],
-        options_measurement: ['Langst', 'Kortst']
-    },
-    {
-        title: 'Wie is er het langst',
-        focused_word: 'samen',
-        type: 'drag_and_drop',
-        question_options: ['Pim & Nynke', 'Bugs & Lola', 'Jan & Hannie', 'Corrie & Koos'],
-        answer_order_indices: [3, 2, 1, 0],
-        options_measurement: ['Langst', 'Kortst']
-    }
-    // Voeg hier meer vragen toe
-];
+
 
 function ListReorder() {
     const answersLocalStorageKey = 'quizAnswers_listReorder';
@@ -38,7 +21,7 @@ function ListReorder() {
     const loadItemsList = () => {
         const items = loadLocalStorage(itemsListLocalStorageKey);
         if (items.length === 0) {
-            return questions_drag_and_drop.map(question => question.question_options);
+            return questions_reorder.map(question => question.question_options);
         }
         return items;
     };
@@ -57,7 +40,7 @@ function ListReorder() {
         // Maak steeds de volgende vraag zichtbaar voor beantwoorde vragen
         let visible = [0];
         answers.forEach((answers, index) => {
-            if (index >= questions_drag_and_drop.length - 1) {
+            if (index >= questions_reorder.length - 1) {
                 // Maak niet een onbestaande vraag zichtbaar
                 return;
             }
@@ -67,12 +50,12 @@ function ListReorder() {
         });
         setVisibleQuestions(visible);
         const answeredQuestions = answers.filter(answers => answers.length > 0);
-        setAllAnswered(answeredQuestions.length === questions_drag_and_drop.length);
+        setAllAnswered(answeredQuestions.length === questions_reorder.length);
     }, [answers, itemsList]);
 
     const handleAnswerSelection = (questionIndex, order) => {
         const updatedAnswers = answers;
-        const options = questions_drag_and_drop[questionIndex].question_options;
+        const options = questions_reorder[questionIndex].question_options;
         updatedAnswers[questionIndex] = order.map(answer => options.indexOf(answer));
         setAnswers(updatedAnswers);
     };
@@ -120,7 +103,7 @@ function ListReorder() {
         let newScore = score;
         const newErrors = [];
 
-        questions_drag_and_drop.forEach((question, index) => {
+        questions_reorder.forEach((question, index) => {
             const userAnswers = answers[index] || [];
 
             // Controleer of de gegeven antwoorden overeenkomen met de correcte antwoorden
@@ -136,7 +119,7 @@ function ListReorder() {
 
         const allAnsweredCorrectly = newErrors.every(error => error === false);
         if (allAnsweredCorrectly) {
-            newScore += questions_drag_and_drop.length * 10; // +10 per goed antwoord
+            newScore += questions_reorder.length * 10; // +10 per goed antwoord
         }
         setScore(newScore);
 
@@ -146,9 +129,10 @@ function ListReorder() {
     };
 
     return (
+        <>
         <div className="quiz-drag-and-drop-list">
             {visibleQuestions.map(questionIndex => {
-                const currentQuestion = questions_drag_and_drop[questionIndex];
+                const currentQuestion = questions_reorder[questionIndex];
                 const items = itemsList[questionIndex];
 
                 return (
@@ -214,7 +198,9 @@ function ListReorder() {
                     </div>
                 );
             })}
-            <button
+      
+        </div>
+        <button
                 type="button"
                 onClick={checkAnswers}
                 className="btn-next-page"
@@ -222,7 +208,7 @@ function ListReorder() {
             >
                 Submit &#8594;
             </button>
-        </div>
+        </>
     );
 }
 

@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ScoreContext } from '../../Context/ScoreProvider';
 
 
-function TwoOptions() {
+function TwoOptions({nextpage}) {
     const [answers, setAnswers] = useState([]);
     const [errors, setErrors] = useState([]);
     const { score, setScore } = useContext(ScoreContext); // Gebruik de context
@@ -50,7 +50,7 @@ function TwoOptions() {
         setScore(newScore); // Update de score in de state
 
         if (newErrors.every(error => error === false)) {
-            navigate('/quiz1end')
+            navigate(nextpage)
         }
 
     };

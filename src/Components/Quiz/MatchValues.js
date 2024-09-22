@@ -132,7 +132,7 @@ function Question({ question, questionIndex, state, onDragEnd, error }) {
     );
 }
 
-function MatchValuesApp() {
+function MatchValuesApp({nextpage}) {
     const [states, setStates] = useState(() => {
         const savedStates = localStorage.getItem('quizAnswers_mv');
         return savedStates ? JSON.parse(savedStates) : questions_drag_and_drop.map((q, questionIndex) => {
@@ -207,7 +207,7 @@ function MatchValuesApp() {
             tempScore += questions_drag_and_drop.length * 10; // Voeg punten toe voor alle goede antwoorden
             setScore(tempScore);
             console.log(`Alle antwoorden zijn goed! Score: ${tempScore}`);
-            navigate('/share-score'); // Ga naar de eindpagina
+            navigate(nextpage); // Ga naar de eindpagina
         } else {
             console.log(`Niet alle antwoorden zijn goed. Score blijft: ${tempScore}`);
         }

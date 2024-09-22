@@ -16,7 +16,7 @@ function QuizP1() {
             <div className="content-page">
                 <div className="content">
                     <h1>Klopt het?</h1>
-                    <TwoOptions />
+                    <TwoOptions nextpage="/quiz1end" />
 
                 </div>
 

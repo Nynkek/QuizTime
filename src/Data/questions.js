@@ -44,22 +44,50 @@ export const questions_multiple_choice = [
         answer_index: [0]
     },
     {
-        title: 'Van wie is de hobby:',
-        focused_word: 'kogelstoten',
+        title: 'Wie heeft blauwe ogen',
+        focused_word: 'ogen',
         type: 'checkbox',
-        q_options: ['Nynke', 'Toes', 'Jan', 'Pim'],
-        answer_index: [1, 2]
+        q_options: ['Julian', 'Jos', 'Diewke', 'Lina', 'Sytske'],
+        answer_index: [0,1,2,3]
+    },
+    {
+        title: 'Wie heeft wel eens een bot',
+        focused_word: 'gebroken',
+        type: 'checkbox',
+        q_options: ['Pim', 'Sytske', 'Hannie', 'Wytse', 'Sander'],
+        answer_index: [1,4]
+    },
+    {
+        title: 'Wie is er na 2000 geboren?',
+        focused_word: 'gebroken',
+        type: 'checkbox',
+        q_options: ['Lina', 'Jouke', 'Wytse', 'Juniper', 'Lisa'],
+        answer_index: [0,1,2,3]
     },
 
 ];
 
 export const questions_drag_and_drop = [
     {
-        title: 'Welke oogkleur hoort bij wie?',
-        type: 'drag_and_drop',
-        question_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
-        answer_options: ['bruin', 'groen', 'blauw', 'paars'],
-        answer_ordered: ['bruin', 'blauw', 'paars', 'groen']
+        title: "Welk huisdier hoort bij wie?",
+        type: "drag_and_drop",
+        question_options: ["Noor", "Jurjen", "Femke", "Jan"],
+        answer_options: ["Kat, Mickey", "Kat, Muis", "Hond, Sparky", "Kat, de rode"],
+        answer_ordered: [0, 1, 2, 3],
+    },
+    {
+        title: "Welke bijnaam hoort bij wie?",
+        type: "drag_and_drop",
+        question_options: ["Jurjen", "Margriet", "Nynke", "Corrie"],
+        answer_options: ["Knilles", "Mooike", "Kekje", "Snurk"],
+        answer_ordered: [3,1,2,0],
+    },
+    {
+        title: "Wie omschrijft zichzelf met:",
+        type: "drag_and_drop",
+        question_options: ["Sytske", "Sander", "Tessa", "Fokje"],
+        answer_options: ["Fantastierijk", "Kikker", "Spectaculair", "Lekkerbek"],
+        answer_ordered: [0, 1, 2, 3],
     },
 ];
 
@@ -67,8 +95,17 @@ export const questions_reorder = [
     {
         title: 'Sorteer de volgende mensen op',
         focused_word: 'Lengte',
-        type: 'reorder',
+        type: 'drag_and_drop',
         question_options: ['Nynke', 'Margriet', 'Jan', 'Teun'],
-        answer_ordered: ['Nynke', 'Jan', 'Margriet', 'Teun']
+        answer_ordered: ['bruin', 'blauw', 'paars', 'groen'],
+        options_measurement: ['Langst', 'Kortst']
+    },
+    {
+        title: 'Wie is er het langst',
+        focused_word: 'samen',
+        type: 'drag_and_drop',
+        question_options: ['Pim & Nynke', 'Bugs & Lola', 'Jan & Hannie', 'Corrie & Koos'],
+        answer_ordered: ['Nynke & Nynke', 'Bugs & Lola', 'Jan & Hannie', 'Corrie & Koos'],
+        options_measurement: ['Langst', 'Kortst']
     },
 ];

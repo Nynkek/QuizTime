@@ -17,14 +17,14 @@ function App() {
       <div className="App">
         <div className="container">
           <Routes>
-            <Route path='/sd' element={<Intro />} />
+            <Route path='/' element={<Intro />} />
             <Route path='/teampicker' element={<TeamPicker />} />
             <Route path='/welcome-team' element={<WelcomeTeam />} />
             <Route path='/quiz1' element={<QuizP1 />} />
             <Route path='/quiz1end' element={<QuizP1End />} />
             <Route path='/quiz2' element={<QuizP2 />} />
             <Route path='/quiz3' element={<QuizP3 />} />
-            <Route path='/' element={<QuizP4 />} />
+            <Route path='/quiz4' element={<QuizP4 />} />
             <Route path='/share-score' element={<ShareScore />} />
 
 

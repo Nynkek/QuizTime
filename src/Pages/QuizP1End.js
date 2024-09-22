@@ -7,6 +7,8 @@ import './Pages.css';
 
 function QuizP1End() {
 
+
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -16,17 +18,25 @@ function QuizP1End() {
             <Header />
             <div className="content-page low-circle-bg">
                 <div className="content">
-                    <h1 className='page-title'>Open envelop</h1>
-                    <p>Je mag de volgende envelop openen! Met de naam:</p>
-
-                    <code>groen</code>
-                    <br />
+                    <h1 className='page-title'>Envelop</h1>
                     <div className='quiz-container'>
-
-
+                        <p className='code-box'>Je mag de volgende envelop openen! Met de naam:</p>
+                        <code className='digit'>groen</code>
+                        <p className='code-box'>Kom pas weer terug bij deze app als je de volgende code hebt ontdekt.</p>
+                    </div>
+                    <div className='quiz-container'>
                         <h2>Puzzles van de envelop opgelost?</h2>
-                        <p>Vul je gevonden code in om door te gaan</p>
-                        <input placeholder='0000'></input>
+                        <p className='code-box'>Vul je gevonden code in om door te gaan</p>
+                        <div className="input-widget">
+                            <input max="9999" className="input" placeholder='0000' />
+                            <div className="digit-background">
+                                <div className="digit"></div>
+                                <div className="digit"></div>
+                                <div className="digit"></div>
+                                <div className="digit"></div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <Link to="/quiz2" className='link-next-page'>

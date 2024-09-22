@@ -177,3 +177,63 @@
     grid-area: 5 / 1 / 6 / 3;
 
 }
+
+.quiz-container code {
+    background-color: var(--lightOrange);
+    display: inline-block;
+    padding: 15px;
+    margin: -1px 4px 0 -1px;
+    font-size: 2em;
+}
+
+.code-box {
+    /* padding-bottom: 1em;
+    padding-bottom: 1em; */
+    margin: 1em 0 1em 0;
+}
+
+/* inputbox */
+
+.input-widget {
+    font-family: 'Courier New', Courier, monospace;
+    vertical-align: top;
+    margin-left: 1rem;
+    font-size: 2rem;
+    display: inline-block;
+    position: relative;
+}
+
+.input-widget .input {
+    width: 8rem;
+    font-size: inherit;
+    font-family: inherit;
+    letter-spacing: 5px;
+    background-color: transparent;
+    border: none;
+}
+
+.input-widget .input::-webkit-inner-spin-button,
+.input-widget .input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-widget .digit-background {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    z-index: -1;
+}
+
+.input-widget .digit-background .digit {
+    display: inline-block;
+}
+
+.input-widget .digit-background .digit::before {
+    content: '0';
+    color: var(--lightOrange);
+    background-color: currentColor;
+    display: inline-block;
+    padding: 1px;
+    margin: -1px 4px 0 -1px;
+}

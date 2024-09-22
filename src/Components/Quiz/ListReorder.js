@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd';
 import { ScoreContext } from '../../Context/ScoreProvider';
 import { useNavigate } from 'react-router-dom';
@@ -26,32 +26,55 @@ const questions_drag_and_drop = [
 ];
 
 function ListReorder() {
-    const [answers, setAnswers] = useState([]); // Houd de antwoorden bij
+    const answersLocalStorageKey = 'quizAnswers_listReorder';
+    const itemsListLocalStorageKey = 'quizAnswers_listReorder_itemList';
+
+    const saveLocalStorage = (data, key) => {
+        localStorage.setItem(key, JSON.stringify(data));
+    };
+    const loadLocalStorage = key => {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    };
+    const loadItemsList = () => {
+        const items = loadLocalStorage(itemsListLocalStorageKey);
+        if (items.length === 0) {
+            return questions_drag_and_drop.map(question => question.question_options);
+        }
+        return items;
+    };
+
+    const [answers, setAnswers] = useState(loadLocalStorage(answersLocalStorageKey)); // Houd de antwoorden bij
     const [visibleQuestions, setVisibleQuestions] = useState([0]); // Houd bij welke vragen zichtbaar zijn
-    const [itemsList, setItemsList] = useState(
-        questions_drag_and_drop.map(question => question.question_options)
-    ); // Houd de items bij voor elke vraag
+    const [itemsList, setItemsList] = useState(loadItemsList()); // Houd de items bij voor elke vraag
     const [allAnswered, setAllAnswered] = useState(false);
     const [errors, setErrors] = useState([]);
     const { score, setScore } = useContext(ScoreContext);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        saveLocalStorage(answers, answersLocalStorageKey);
+        saveLocalStorage(itemsList, itemsListLocalStorageKey);
+        // Maak steeds de volgende vraag zichtbaar voor beantwoorde vragen
+        let visible = [0];
+        answers.forEach((answers, index) => {
+            if (index >= questions_drag_and_drop.length - 1) {
+                // Maak niet een onbestaande vraag zichtbaar
+                return;
+            }
+            if (answers.length > 0) {
+                visible.push(index + 1);
+            }
+        });
+        setVisibleQuestions(visible);
+        const answeredQuestions = answers.filter(answers => answers.length > 0);
+        setAllAnswered(answeredQuestions.length === questions_drag_and_drop.length);
+    }, [answers, itemsList]);
+
     const handleAnswerSelection = (questionIndex, order) => {
         const updatedAnswers = answers;
         const options = questions_drag_and_drop[questionIndex].question_options;
-        const answerIndices = order.map(answer => options.indexOf(answer));
-        updatedAnswers[questionIndex] = answerIndices;
+        updatedAnswers[questionIndex] = order.map(answer => options.indexOf(answer));
         setAnswers(updatedAnswers);
-
-        // Voeg de volgende vraag toe aan de zichtbare vragen als deze er is
-        if (
-            questionIndex === visibleQuestions.length - 1 &&
-            visibleQuestions.length < questions_drag_and_drop.length
-        ) {
-            setVisibleQuestions([...visibleQuestions, questionIndex + 1]);
-        } else if (questionIndex === questions_drag_and_drop.length - 1) {
-            setAllAnswered(true);
-        }
     };
 
     const reorder = (list, startIndex, endIndex) => {

@@ -23,7 +23,7 @@ function QuizP3() {
 
 
                 </div>
-                <Link to="/quiz4" className='link-next-page'>
+                <Link to="/quiz3end" className='link-next-page'>
                     <button type='button' className='btn-next-page'>Submit &#8594; </button>
                 </Link>
             </div>

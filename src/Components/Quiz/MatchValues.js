@@ -126,13 +126,13 @@ function Question({ question, questionIndex, state, onDragEnd, error }) {
                 </div>
 
                 {/* Foutmelding weergeven als er een fout is */}
-                {error && <div className="error-message">Fout! Controleer je antwoorden.</div>}
+                {error && <div className="error">Fout! Controleer je antwoord.</div>}
             </div>
         </DragDropContext>
     );
 }
 
-function MatchValuesApp() {
+function MatchValuesApp({nextpage}) {
     const [states, setStates] = useState(() => {
         const savedStates = localStorage.getItem('quizAnswers_mv');
         return savedStates ? JSON.parse(savedStates) : questions_drag_and_drop.map((q, questionIndex) => {
@@ -184,13 +184,14 @@ function MatchValuesApp() {
             }
     
             // Creëer een array van correcte antwoorden op basis van answer_ordered
-            const correctAnswers = question.answer_ordered.map(i => question.answer_options[i]);
+            const correctAnswers = question.answer_ordered.map(i => question.question_options[i]);
             console.log(`Correcte antwoorden: ${correctAnswers}`);
 
             // Vergelijk userAnswers met correctAnswers
             if (!arraysEqual(userAnswers, correctAnswers)) {
                 newErrors[index] = true; // Vraag is fout
                 tempScore -= 5; // Strafpunten
+                setScore(tempScore);
                 console.log(`Fout: Antwoorden komen niet overeen voor vraag ${index + 1}`);
             } else {
                 newErrors[index] = false; // Vraag is goed
@@ -206,13 +207,14 @@ function MatchValuesApp() {
             tempScore += questions_drag_and_drop.length * 10; // Voeg punten toe voor alle goede antwoorden
             setScore(tempScore);
             console.log(`Alle antwoorden zijn goed! Score: ${tempScore}`);
-            navigate('/quiz1end'); // Ga naar de eindpagina
+            navigate(nextpage); // Ga naar de eindpagina
         } else {
             console.log(`Niet alle antwoorden zijn goed. Score blijft: ${tempScore}`);
         }
     };
 
     return (
+        <>
         <div>
             {questions_drag_and_drop.map((question, questionIndex) => {
                 const state = states[questionIndex];
@@ -262,10 +264,12 @@ function MatchValuesApp() {
                 );
             })}
 
-            <button onClick={checkAnswers} disabled={!allAnswered}>
+           
+        </div>
+        <button onClick={checkAnswers} disabled={!allAnswered} type='button' className='btn-next-page'>
                 Controleer Antwoorden
             </button>
-        </div>
+        </>
     );
 }
 

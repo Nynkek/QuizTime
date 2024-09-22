@@ -40,7 +40,7 @@ function TeamPicker() {
 
                 </div>
                 <Link to="/welcome-team" className='link-next-page'>
-                    <button type='button' className='btn-next-page'>Start &#8594; </button>
+                    <button type='button' className='btn-next-page' disabled={!selectedTeam}>Start &#8594; </button>
                 </Link>
 
             </div>

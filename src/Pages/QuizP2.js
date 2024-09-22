@@ -17,7 +17,7 @@ function QuizP2() {
             < div className="content-page" >
                 <div className="content" >
 
-                    < MultipleChoice />
+                    < MultipleChoice nextpage="/quiz2end" />
 
 
 

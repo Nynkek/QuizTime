@@ -122,3 +122,44 @@ h3 {
 .btn-next-page:disabled {
   opacity: 0.2;
 }
+
+.animation-overlay {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-ndex: 1000;
+    background-color: color-mix(in srgb, var(--purple) 50%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none; /* zodat je wel op de achterliggende dingen kan klikken */
+}
+
+.animation-overlay.visible {
+    opacity: 1;
+}
+
+.animation-overlay .score-container {
+    width: 25%;
+    padding: 2em;
+    background-color: var(--darkPurple);
+    border: 1px solid var(--darkestPurple);
+    border-radius: var(--borderRadius);
+    text-align: center;
+}
+
+.animation-overlay .score-container h1 {
+    margin: 0;
+    padding: 0;
+}
+
+.animation-overlay .score-container.positive h1:before {
+    content: '+';
+}
+
+.animation-overlay .score-container.negative h1 {
+    color: var(--errorRed);
+}

@@ -12,9 +12,5 @@ export const ScoreProvider = ({ children }) => {
         localStorage.setItem('quizScore', score);
     }, [score]);
 
-    return (
-        <ScoreContext.Provider value={{ score, setScore }}>
-            {children}
-        </ScoreContext.Provider>
-    );
+    return <ScoreContext.Provider value={{ score, setScore }}>{children}</ScoreContext.Provider>;
 };

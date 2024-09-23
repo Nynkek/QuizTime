@@ -57,7 +57,7 @@ export const questions_multiple_choice = [
     },
     {
         title: 'Wie is er na 2000 geboren?',
-        focused_word: 'gebroken',
+        focused_word: 'geboren',
         type: 'checkbox',
         q_options: ['Lina', 'Jouke', 'Wytse', 'Juniper', 'Lisa'],
         answer_index: [0, 1, 2, 3]

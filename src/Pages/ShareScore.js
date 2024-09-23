@@ -33,11 +33,11 @@ function ShareScore() {
         const element = printRef.current;
 
         // Maak een screenshot van het element met html2canvas
-        const canvas = await html2canvas(element);
+        const canvas = await html2canvas(element, { backgroundColor: null });
 
         // Converteer canvas naar blob
-        canvas.toBlob(async (blob) => {
-            const file = new File([blob], 'score.jpg', { type: 'image/jpeg' });
+        canvas.toBlob(async blob => {
+            const file = new File([blob], 'score.png', { type: 'image/png' });
 
             // Check of het apparaat bestandsshares ondersteunt
             if (navigator.canShare && canShareFiles()) {
@@ -55,7 +55,7 @@ function ShareScore() {
                 // Fallback als delen van bestanden niet wordt ondersteund
                 alert('Delen wordt niet ondersteund op dit apparaat. Probeer een screenshot te maken.');
             }
-        }, 'image/jpeg');
+        }, 'image/png');
     };
 
     return (

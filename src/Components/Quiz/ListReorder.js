@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Quiz.css';
 import { questions_reorder } from '../../Data/questions';
 
-function ListReorder() {
+function ListReorder({ nextpage }) {
     const answersLocalStorageKey = 'quizAnswers_listReorder';
     const itemsListLocalStorageKey = 'quizAnswers_listReorder_itemList';
 
@@ -122,83 +122,79 @@ function ListReorder() {
         setScore(newScore);
 
         if (allAnsweredCorrectly) {
-            navigate('/quiz4');
+            navigate(nextpage);
         }
     };
 
     return (
-        <>
-            <div className="quiz-drag-and-drop-list">
-                {visibleQuestions.map(questionIndex => {
-                    const currentQuestion = questions_reorder[questionIndex];
-                    const items = itemsList[questionIndex];
+        <div className="quiz-drag-and-drop-list">
+            {visibleQuestions.map(questionIndex => {
+                const currentQuestion = questions_reorder[questionIndex];
+                const items = itemsList[questionIndex];
 
-                    return (
-                        <div key={questionIndex} className="quiz-container">
-                            <div className="question">
-                                <h3>{currentQuestion.title}</h3>
-                                <h3>
-                                    <strong>{currentQuestion.focused_word}</strong>
-                                </h3>
-                                <DragDropContext
-                                    onDragEnd={result => onDragEnd(result, questionIndex)}
-                                >
-                                    <Droppable droppableId={`droppable-${questionIndex}`}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                {...provided.droppableProps}
-                                                ref={provided.innerRef}
-                                                className={`droppable ${
-                                                    snapshot.isDraggingOver ? 'isDraggingOver' : ''
-                                                }`}
-                                            >
-                                                {items.map((item, index) => (
-                                                    <Draggable
-                                                        key={item}
-                                                        draggableId={item}
-                                                        index={index}
-                                                    >
-                                                        {(provided, snapshot) => (
-                                                            <div
-                                                                ref={provided.innerRef}
-                                                                {...provided.draggableProps}
-                                                                {...provided.dragHandleProps}
-                                                                className={`draggable ${
-                                                                    snapshot.isDragging
-                                                                        ? 'isDragging'
-                                                                        : ''
-                                                                }`}
-                                                            >
-                                                                {item}
-                                                            </div>
-                                                        )}
-                                                    </Draggable>
-                                                ))}
-                                                {provided.placeholder}
-                                            </div>
-                                        )}
-                                    </Droppable>
-                                </DragDropContext>
-                                {/* Toon foutmelding onder de vraag als deze fout is beantwoord */}
-                                {errors[questionIndex] && (
-                                    <p className="error">Dit antwoord is fout, probeer opnieuw!</p>
-                                )}
+                return (
+                    <div key={questionIndex} className="quiz-container">
+                        <div className="question">
+                            <h3>{currentQuestion.title}</h3>
+                            <h3>
+                                <strong>{currentQuestion.focused_word}</strong>
+                            </h3>
+                            <DragDropContext onDragEnd={result => onDragEnd(result, questionIndex)}>
+                                <Droppable droppableId={`droppable-${questionIndex}`}>
+                                    {(provided, snapshot) => (
+                                        <div
+                                            {...provided.droppableProps}
+                                            ref={provided.innerRef}
+                                            className={`droppable ${
+                                                snapshot.isDraggingOver ? 'isDraggingOver' : ''
+                                            }`}
+                                        >
+                                            {items.map((item, index) => (
+                                                <Draggable
+                                                    key={item}
+                                                    draggableId={item}
+                                                    index={index}
+                                                >
+                                                    {(provided, snapshot) => (
+                                                        <div
+                                                            ref={provided.innerRef}
+                                                            {...provided.draggableProps}
+                                                            {...provided.dragHandleProps}
+                                                            className={`draggable ${
+                                                                snapshot.isDragging
+                                                                    ? 'isDragging'
+                                                                    : ''
+                                                            }`}
+                                                        >
+                                                            {item}
+                                                        </div>
+                                                    )}
+                                                </Draggable>
+                                            ))}
+                                            {provided.placeholder}
+                                        </div>
+                                    )}
+                                </Droppable>
+                            </DragDropContext>
+                            {/* Toon foutmelding onder de vraag als deze fout is beantwoord */}
+                            {errors[questionIndex] && (
+                                <p className="error">Dit antwoord is fout, probeer opnieuw!</p>
+                            )}
+                        </div>
+                        <div className="arrow">
+                            <div className="arrow-text-top">
+                                {currentQuestion.options_measurement[0]}
                             </div>
-                            <div className="arrow">
-                                <div className="arrow-text-top">
-                                    {currentQuestion.options_measurement[0]}
-                                </div>
-                                <div className="arrow-top"></div>
-                                <div className="arrow-line"></div>
-                                <div className="arrow-bottom"></div>
-                                <div className="arrow-text-bottom">
-                                    {currentQuestion.options_measurement[1]}
-                                </div>
+                            <div className="arrow-top"></div>
+                            <div className="arrow-line"></div>
+                            <div className="arrow-bottom"></div>
+                            <div className="arrow-text-bottom">
+                                {currentQuestion.options_measurement[1]}
                             </div>
                         </div>
-                    );
-                })}
-            </div>
+                    </div>
+                );
+            })}
             <button
                 type="button"
                 onClick={checkAnswers}
@@ -207,7 +203,7 @@ function ListReorder() {
             >
                 Submit &#8594;
             </button>
-        </>
+        </div>
     );
 }
 

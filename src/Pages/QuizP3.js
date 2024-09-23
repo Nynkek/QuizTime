@@ -13,7 +13,7 @@ function QuizP3() {
             <Header />
             <div className="content-page">
                 <div className="content">
-                    <ListReorder />
+                    <ListReorder nextpage="/quiz3end" />
                 </div>
             </div>
         </>

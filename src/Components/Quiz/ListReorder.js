@@ -26,9 +26,9 @@ function ListReorder() {
         return items;
     };
 
-    const [answers, setAnswers] = useState(loadLocalStorage(answersLocalStorageKey)); // Houd de antwoorden bij
+    const [answers, setAnswers] = useState(() => loadLocalStorage(answersLocalStorageKey)); // Houd de antwoorden bij
     const [visibleQuestions, setVisibleQuestions] = useState([0]); // Houd bij welke vragen zichtbaar zijn
-    const [itemsList, setItemsList] = useState(loadItemsList()); // Houd de items bij voor elke vraag
+    const [itemsList, setItemsList] = useState(() => loadItemsList()); // Houd de items bij voor elke vraag
     const [allAnswered, setAllAnswered] = useState(false);
     const [errors, setErrors] = useState([]);
     const { score, setScore } = useContext(ScoreContext);

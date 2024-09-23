@@ -118,6 +118,12 @@ h3 {
   border: none;
 }
 
+.btn-next-page:active {
+  background-color: var(--darkPurple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkBlack);
+}
+
 .btn-next-page:disabled {
   opacity: 0.2;
 }

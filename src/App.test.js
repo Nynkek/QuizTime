@@ -1,4 +1,8 @@
 import { render, screen } from '@testing-library/react';
 // import App from './App';
 
-// Geen tests voorlopig...
+describe('are there any tests?', () => {
+    it('has tests', () => {
+        expect(true).toBe(true);
+    });
+});

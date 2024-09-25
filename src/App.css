@@ -135,7 +135,7 @@ h3 {
     top: 0;
     width: 100%;
     height: 100%;
-    z-ndex: 1000;
+    z-index: 1000;
     background-color: color-mix(in srgb, var(--purple) 50%, transparent);
     display: flex;
     align-items: center;

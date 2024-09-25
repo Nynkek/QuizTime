@@ -59,61 +59,65 @@ const arraysEqual = (arr1, arr2) => {
 
 function Question({ question, questionIndex, state, onDragEnd, error }) {
   return (
-    <DragDropContext onDragEnd={onDragEnd}>
-      <div className="question-section">
-        <h2>{question.title}</h2>
-        <div className="droppable-container droppable-container-answer-options">
-          {question.answer_options.map((answerOption, index) => (
-            <Droppable
-              key={`droppable-${questionIndex}-${index + 2}`}
-              droppableId={`droppable-${questionIndex}-${index + 2}`}
-            >
+    <div className="quiz-container">
+      <DragDropContext onDragEnd={onDragEnd}>
+        <div className="question-section">
+          <h2>{question.title}</h2>
+          <div className="droppable-container droppable-container-answer-options">
+            {question.answer_options.map((answerOption, index) => (
+              <Droppable
+                key={`droppable-${questionIndex}-${index + 2}`}
+                droppableId={`droppable-${questionIndex}-${index + 2}`}
+              >
+                {(provided) => (
+                  <div className="droppable-container-answer-options-container">
+                    <div
+                      className="droppable-area droppable-area-answer-options"
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                    >
+                      <MatchValuesList
+                        values={
+                          state[`droppable-${questionIndex}-${index + 2}`]
+                        }
+                      />
+                      {provided.placeholder}
+                    </div>
+                    <div className="droppable-area-description">
+                      {answerOption}
+                    </div>
+                  </div>
+                )}
+              </Droppable>
+            ))}
+          </div>
+
+          <div className="droppable-container droppable-container-names">
+            <Droppable droppableId={`droppable-${questionIndex}-1`}>
               {(provided) => (
-                <div className="droppable-container-answer-options-container">
-                  <div
-                    className="droppable-area droppable-area-answer-options"
-                    ref={provided.innerRef}
-                    {...provided.droppableProps}
-                  >
-                    <MatchValuesList
-                      values={state[`droppable-${questionIndex}-${index + 2}`]}
-                    />
-                    {provided.placeholder}
-                  </div>
-                  <div className="droppable-area-description">
-                    {answerOption}
-                  </div>
+                <div
+                  className="droppable-area droppable-area-names"
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                >
+                  <MatchValuesList
+                    values={state[`droppable-${questionIndex}-1`]}
+                  />
+                  {provided.placeholder}
                 </div>
               )}
             </Droppable>
-          ))}
-        </div>
-
-        <div className="droppable-container droppable-container-names">
-          <Droppable droppableId={`droppable-${questionIndex}-1`}>
-            {(provided) => (
-              <div
-                className="droppable-area droppable-area-names"
-                ref={provided.innerRef}
-                {...provided.droppableProps}
-              >
-                <MatchValuesList
-                  values={state[`droppable-${questionIndex}-1`]}
-                />
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </div>
-
-        {/* Foutmelding weergeven als er een fout is */}
-        {error && (
-          <div className="error">
-            Fout! Controleer je antwoord, er kan maar 1 antwoord per vakje.
           </div>
-        )}
-      </div>
-    </DragDropContext>
+
+          {/* Foutmelding weergeven als er een fout is */}
+          {error && (
+            <div className="error">
+              Fout! Controleer je antwoord, er kan maar 1 antwoord per vakje.
+            </div>
+          )}
+        </div>
+      </DragDropContext>
+    </div>
   );
 }
 
@@ -209,60 +213,58 @@ function MatchValuesApp({ nextpage }) {
   };
 
   return (
-    <>
-      <div>
-        {questions_drag_and_drop.map((question, questionIndex) => {
-          const state = states[questionIndex];
-          const onDragEnd = (result) => {
-            const { source, destination } = result;
+    <div className="page">
+      {questions_drag_and_drop.map((question, questionIndex) => {
+        const state = states[questionIndex];
+        const onDragEnd = (result) => {
+          const { source, destination } = result;
 
-            if (!destination) return;
+          if (!destination) return;
 
-            const currentState = states[questionIndex];
+          const currentState = states[questionIndex];
 
-            if (source.droppableId === destination.droppableId) {
-              const values = reorder(
-                currentState[source.droppableId],
-                source.index,
-                destination.index
-              );
-              const newState = {
-                ...currentState,
-                [source.droppableId]: values,
-              };
-              setStates(
-                states.map((s, idx) => (idx === questionIndex ? newState : s))
-              );
-            } else {
-              const result = move(
-                currentState[source.droppableId],
-                currentState[destination.droppableId],
-                source,
-                destination
-              );
+          if (source.droppableId === destination.droppableId) {
+            const values = reorder(
+              currentState[source.droppableId],
+              source.index,
+              destination.index
+            );
+            const newState = {
+              ...currentState,
+              [source.droppableId]: values,
+            };
+            setStates(
+              states.map((s, idx) => (idx === questionIndex ? newState : s))
+            );
+          } else {
+            const result = move(
+              currentState[source.droppableId],
+              currentState[destination.droppableId],
+              source,
+              destination
+            );
 
-              const newState = {
-                ...currentState,
-                ...result,
-              };
-              setStates(
-                states.map((s, idx) => (idx === questionIndex ? newState : s))
-              );
-            }
-          };
+            const newState = {
+              ...currentState,
+              ...result,
+            };
+            setStates(
+              states.map((s, idx) => (idx === questionIndex ? newState : s))
+            );
+          }
+        };
 
-          return (
-            <Question
-              key={questionIndex}
-              question={question}
-              questionIndex={questionIndex}
-              state={state}
-              onDragEnd={onDragEnd}
-              error={errors[questionIndex]} // Foutmelding doorgeven
-            />
-          );
-        })}
-      </div>
+        return (
+          <Question
+            key={questionIndex}
+            question={question}
+            questionIndex={questionIndex}
+            state={state}
+            onDragEnd={onDragEnd}
+            error={errors[questionIndex]} // Foutmelding doorgeven
+          />
+        );
+      })}
       <button
         onClick={checkAnswers}
         disabled={!allAnswered}
@@ -271,7 +273,7 @@ function MatchValuesApp({ nextpage }) {
       >
         Controleer Antwoorden
       </button>
-    </>
+    </div>
   );
 }
 

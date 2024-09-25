@@ -117,7 +117,7 @@ h3 {
 }
 
 .btn-next-page:active {
-  background-color: var(--darkPurple);
+  background-color: var(--lighterPurple);
   color: var(--darkBlack);
   border: 1px solid var(--darkBlack);
 }
@@ -153,7 +153,7 @@ h3 {
   padding: 5%;
   color: var(--darkPurple);
   background-color: var(--lightPink);
-  border: 5px solid var(--pink);
+  border: none;
   border-radius: var(--borderRadius);
   text-align: center;
   transition: opacity 0.5s ease-in-out; /* Animatie voor soepel verschijnen en verdwijnen */

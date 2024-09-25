@@ -15,10 +15,16 @@ function Header() {
     <>
       <header className="header">
         <div className="team-name">
-          <h3>Team {selectedTeam}</h3>
+          <h3>
+            Team <br />
+            {selectedTeam}
+          </h3>
           {/* <p>vraag 1</p> */}
         </div>
-        <div className="score">Score: {score}</div>
+        <div className="score">
+          Score:
+          <br /> {score}
+        </div>
       </header>
     </>
   );

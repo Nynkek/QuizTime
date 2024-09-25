@@ -1,23 +1,26 @@
-import React, { useEffect } from 'react';
-import Header from '../Components/Header/Header';
-import './Pages.css';
-import ListReorder from '../Components/Quiz/ListReorder';
+import React, { useEffect } from "react";
+import Header from "../Components/Header/Header";
+import "./Pages.css";
+import ListReorder from "../Components/Quiz/ListReorder";
 
 function QuizP3() {
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-    return (
-        <>
-            <Header />
-            <div className="content-page">
-                <div className="content">
-                    <ListReorder nextpage="/quiz3end" />
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <>
+      <Header />
+      <div className="content-page">
+        <div className="content">
+          <h1>Zet in de juiste volgorde</h1>
+          <p>Sleep de namen naar de juiste volgorde</p>
+
+          <ListReorder nextpage="/quiz3end" />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default QuizP3;

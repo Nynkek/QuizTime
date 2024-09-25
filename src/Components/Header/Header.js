@@ -1,29 +1,24 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { ScoreContext } from "../../Context/ScoreProvider";
+import { teams } from "../../Data/teams";
 
 import "./header.css";
 
 function Header() {
-  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedTeamIndex] = useState(
+    () => localStorage.getItem("selectedTeamIndex") || 0
+  );
   const { score } = useContext(ScoreContext); // Gebruik de context
 
-  useEffect(() => {
-    const savedTeam = localStorage.getItem("selectedTeam");
-    if (savedTeam) {
-      setSelectedTeam(savedTeam);
-    }
-  }, []);
-
+  const selectedTeam = teams[selectedTeamIndex];
   return (
     <>
       <header className="header">
         <div className="team-name">
-          <h3>{selectedTeam}</h3>
-          {/* <p>vraag 1</p> */}
+          <h3>Team {selectedTeam}</h3>
+          <p>vraag 1</p>
         </div>
-        <div className="score">
-          <p>Score:</p> <p>{score}</p>
-        </div>
+        <div className="score">Score: {score}</div>
       </header>
     </>
   );

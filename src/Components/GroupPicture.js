@@ -1,6 +1,6 @@
 import React from "react";
 
-function GroupPicture({ opdracht, location, hide }) {
+function GroupPicture({ opdracht, didPressButton }) {
   return (
     <>
       <h1 className="page-title">Groepsfoto!</h1>
@@ -16,7 +16,7 @@ function GroupPicture({ opdracht, location, hide }) {
           <a href="https://wa.me/+31648813006">06 48813006</a>.
         </p>
       </div>
-      <button type="button" className="btn-next-page" onClick={hide}>
+      <button type="button" className="btn-next-page" onClick={didPressButton}>
         Mijn team heeft een foto gestuurd naar Nynke &#8594;
       </button>
     </>

@@ -1,237 +1,243 @@
 .quiz-container {
-    width: 100%;
-    border: 1px solid var(--lighterPurple);
-    transition: background-color 0.3s ease;
-    border-radius: var(--borderRadius);
-    padding: 10px;
-    text-align: center;
-    margin-bottom: 20px;
+  width: 100%;
+  border: 1px solid var(--lighterPurple);
+  transition: background-color 0.3s ease;
+  border-radius: var(--borderRadius);
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* TwoOptions.css */
 .puzzle-two-options {
-    width: 100%;
-    margin: 20px 0;
+  width: 100%;
+  margin: 20px 0;
 }
 
 .puzzle-two-options h3 {
-    font-family: 'Alegreya sans';
-    font-weight: 500;
-    padding-bottom: 1em;
-    padding-left: 2px;
-    padding-right: 2px;
+  font-family: "Alegreya sans";
+  font-weight: 500;
+  padding-bottom: 1em;
+  padding-left: 2px;
+  padding-right: 2px;
 }
 
 .puzzle-two-options ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 .puzzle-two-options li {
-    flex: 1;
-    margin: 1%;
-    font-weight: 500;
-    font-size: 1em;
+  flex: 1;
+  margin: 1%;
+  font-weight: 500;
+  font-size: 1em;
 }
 
-.puzzle-two-options li input[type='radio'] {
-    display: none;
+.puzzle-two-options li input[type="radio"] {
+  display: none;
 }
 
 .puzzle-two-options li label {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    background-color: var(--purple);
-    color: var(--darkBlack);
-    border: 1px solid var(--darkestPurple);
-    transition: background-color 0.3s ease;
-    border-radius: var(--borderRadius);
+  display: block;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--purple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkestPurple);
+  transition: background-color 0.3s ease;
+  border-radius: var(--borderRadius);
 }
 
-.puzzle-two-options li input[type='radio']:checked + label {
-    background-color: var(--lightPurple);
-    color: var(--darkBlack);
-    border: 1px solid var(--darkestPurple);
+.puzzle-two-options li input[type="radio"]:checked + label {
+  background-color: var(--lightPurple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkestPurple);
 }
 
 .error {
-    color: var(--errorRed);
+  color: var(--errorRed);
 }
 
 /* TwoOptions.css */
 h3 strong {
-    font-size: 2em;
+  font-size: 2em;
 }
 
 .puzzle-multiple-choice {
-    width: 100%;
-    margin: 10px 0;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .puzzle-multiple-choice ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 .puzzle-multiple-choice li {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
-.puzzle-multiple-choice li input[type='checkbox'] {
-    display: none;
-    /* Verberg de standaard checkbox */
+.puzzle-multiple-choice li input[type="checkbox"] {
+  display: none;
+  /* Verberg de standaard checkbox */
 }
 
 .puzzle-multiple-choice li label {
-    display: block;
-    width: 100%;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    background-color: var(--purple);
-    color: var(--darkBlack);
-    border: 1px solid var(--darkestPurple);
-    transition: background-color 0.3s ease;
-    border-radius: var(--borderRadius);
+  display: block;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--purple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkestPurple);
+  transition: background-color 0.3s ease;
+  border-radius: var(--borderRadius);
 }
 
-.puzzle-multiple-choice li input[type='checkbox']:checked + label {
-    background-color: var(--lightPurple);
-    color: var(--darkBlack);
-    border: 1px solid var(--darkestPurple);
+.puzzle-multiple-choice li input[type="checkbox"]:checked + label {
+  background-color: var(--lightPurple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkestPurple);
 }
 
 /* Stijlen voor de Drag & Drop lijst */
 .quiz-drag-and-drop-list {
-    width: 100%;
-    margin: 10px 0;
+  width: 100%;
+  margin: 10px 0;
 }
 
 .quiz-drag-and-drop-list .quiz-container {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    justify-content: flex-end;
-    align-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-end;
+  align-content: center;
 }
 
 .quiz-container .question {
-    flex-grow: 6;
-    background-color: transparent;
-    padding: 10px;
+  flex-grow: 6;
+  background-color: transparent;
+  padding: 10px;
 }
 
 .quiz-container .arrow {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: none;
-    padding: 1px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  padding: 1px;
 }
 
 /* Pijl naar boven */
 
 .quiz-container .arrow-text-top {
-    padding-top: 6em;
+  padding-top: 6em;
 }
 
 .quiz-container .arrow-top {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 15px solid black;
-    padding-top: 1em;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid black;
+  padding-top: 1em;
 }
 
 .quiz-container .arrow-bottom {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 15px solid black;
-    padding-bottom: 1em;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid black;
+  padding-bottom: 1em;
 }
 
 .arrow-line {
-    width: 2px;
-    height: 100%;
-    background-color: black;
+  width: 2px;
+  height: 100%;
+  background-color: black;
 }
 
 .droppable {
-    padding: 8px;
-    width: 100%;
+  padding: 8px;
+  width: 100%;
 }
 
 .draggable {
-    user-select: none;
-    width: 100%;
-    padding: 20px;
-    cursor: pointer;
-    background-color: var(--purple);
-    color: var(--darkBlack);
-    border: 1px solid var(--darkestPurple);
-    transition: background-color 0.3s ease;
-    border-radius: var(--borderRadius);
-    margin-bottom: 10px;
+  user-select: none;
+  width: 100%;
+  padding: 20px;
+  cursor: pointer;
+  background-color: var(--purple);
+  color: var(--darkBlack);
+  border: 1px solid var(--darkestPurple);
+  transition: background-color 0.3s ease;
+  border-radius: var(--borderRadius);
+  margin-bottom: 10px;
 }
 
 .draggable.isDragging {
-    background-color: var(--lightPurple);
+  background-color: var(--lightPurple);
 }
 
-/* MatchValues */
+/* ---MatchValues--- */
 .droppable-container {
-    display: flex;
-    justify-content: space-around;
-    border-radius: var(--borderRadius);
+  display: flex;
+  justify-content: space-around;
+  border-radius: var(--borderRadius);
 }
 
 .droppable-container-answer-options {
-    min-height: 4em;
-    display: flex;
-    flex-direction: column;
+  min-height: calc(2em + 16px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* voorkomt dat de inhoud de container uitbreidt */
+  overflow-anchor: hidden;
 }
 
 .droppable-area {
-    width: 220px;
-    /* min-height: 200px; */
-    border: 1px solid var(--darkBlack);
-    padding: 8px;
-    margin: 8px;
-    background-color: var(--purple);
-    border-radius: var(--borderRadius);
+  width: 12ch;
+  border: 1px solid var(--darkBlack);
+  padding: 8px;
+  margin: 8px;
+  background-color: var(--purple);
+  border-radius: var(--borderRadius);
 }
 
 .droppable-area-answer-options {
-    border-style: dashed;
-    min-height: 2em;
+  border-style: dashed;
+  min-height: calc(2em + 28px);
 }
 
 .droppable-container-answer-options-container {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.droppable-area-description {
+  align-self: center;
 }
 
 .droppable-area-names {
-    display: flex;
-    flex-direction: row;
-    gap: 5px;
-    justify-content: space-between;
-    width: 100%;
-    min-height: 2em;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 5px;
+  width: 100%;
+  min-height: calc(2em + 28px);
 }
 
 .match-value-item {
-    width: 4em;
-    border: 1px solid var(--darkBlack);
-    background-color: var(--purple);
-    padding: 8px;
-    border-radius: var(--borderRadius);
+  min-width: 9.5ch;
+  border: 1px solid var(--darkBlack);
+  background-color: var(--purple);
+  padding: 8px;
+  border-radius: var(--borderRadius);
+  margin: 4px;
 }

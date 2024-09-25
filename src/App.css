@@ -1,28 +1,26 @@
-@import url('https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap");
 
 :root {
-  --purple: #AEAFF7;
-  --darkPurple: #7879F1;
-  --darkestPurple: #21005D;
+  --purple: #aeaff7;
+  --darkPurple: #7879f1;
+  --darkestPurple: #21005d;
   --lightPurple: #dac6fa;
-  --lighterPurple: #EADDFF;
-  --darkBlack: #371B34;
-  --fuschia: #CDC2F1;
-  --darkerPink: #EFB8C8;
-  --errorRed: #B3261E;
-  --white: #E5E5E5;
-  --orange: #F09E54;
-  --lightOrange: #FBE2CC;
-  --pink: #EF5DA8;
-  --lightPink: #FCDDEC;
-  --blue: #A0E3E2;
+  --lighterPurple: #eaddff;
+  --darkBlack: #371b34;
+  --fuschia: #cdc2f1;
+  --darkerPink: #efb8c8;
+  --errorRed: #b3261e;
+  --white: #e5e5e5;
+  --orange: #f09e54;
+  --lightOrange: #fbe2cc;
+  --pink: #ef5da8;
+  --lightPink: #fcddec;
+  --blue: #a0e3e2;
   --brown: #954441;
   --colorRed: 237, 0, 0;
   --colorGreen: 0, 189, 0;
   --borderRadius: 18px;
 }
-
 
 #root {
   display: flex;
@@ -40,20 +38,19 @@ a:any-link {
 }
 
 body {
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size: 1.0em;
+  font-family: "Alegreya Sans", sans-serif;
+  font-size: 1em;
   font-weight: 400;
   background-color: var(--purple);
   color: var(--darkBlack);
 }
-
 
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: 'Alegreya', serif;
+  font-family: "Alegreya", serif;
   font-optical-sizing: auto;
   font-style: normal;
   letter-spacing: 0.02em;
@@ -132,52 +129,49 @@ h3 {
 /* animation */
 
 .animation-overlay {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    background-color: color-mix(in srgb, var(--purple) 50%, transparent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
-    pointer-events: none; /* zodat je wel op de achterliggende dingen kan klikken */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: color-mix(in srgb, var(--purple) 50%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none; /* zodat je wel op de achterliggende dingen kan klikken */
 }
 
 .animation-overlay.visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 .animation-overlay .score-container {
-    width: 25%;
-    padding: 2em;
-    color: var(--darkPurple);
-    background-color: var(--lightPink);
-    border: 5px solid var(--pink);
-    border-radius: var(--borderRadius);
-    text-align: center;
-    transition: opacity 0.5s ease-in-out; /* Animatie voor soepel verschijnen en verdwijnen */
-
-    
+  font-family: "Alegreya", serif;
+  width: 25%;
+  padding: 5%;
+  color: var(--darkPurple);
+  background-color: var(--lightPink);
+  border: 5px solid var(--pink);
+  border-radius: var(--borderRadius);
+  text-align: center;
+  transition: opacity 0.5s ease-in-out; /* Animatie voor soepel verschijnen en verdwijnen */
 }
 
 .animation-overlay .score-container h1 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.animation-overlay .score-container.positive{
- color: green;
+.animation-overlay .score-container.positive {
+  color: green;
 }
 
 .animation-overlay .score-container.positive h1:before {
-    content: '+';
+  content: "+";
 }
 
-
 .animation-overlay .score-container.negative h1 {
-    color: var(--errorRed);
-
+  color: var(--errorRed);
 }

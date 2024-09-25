@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header/Header";
 import "./Pages.css";
-import { first_envelop } from "../Data/envelopQuestions";
+import { villa_envelop } from "../Data/envelopQuestions";
 import GroupPicture from "../Components/GroupPicture";
 import Envelop from "../Components/Envelop";
 
@@ -9,7 +9,6 @@ function QuizP1End() {
   const nextpage = "/quiz2";
   const [pictureTaken, setPictureTaken] = useState(false);
 
-  // Scroll naar boven bij laden van de pagina
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pictureTaken]);
@@ -35,7 +34,7 @@ function QuizP1End() {
           )}
           {pictureTaken && (
             <Envelop
-              correctAnswers={first_envelop}
+              correctAnswers={villa_envelop}
               nextpage={nextpage}
               envelopColor="groen"
             />

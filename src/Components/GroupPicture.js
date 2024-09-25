@@ -17,7 +17,7 @@ function GroupPicture({ opdracht, location, hide }) {
         </p>
       </div>
       <button type="button" className="btn-next-page" onClick={hide}>
-        Ik heb de groepsfoto gestuurd naar Nynke &#8594;
+        Mijn team heeft een foto gestuurd naar Nynke &#8594;
       </button>
     </>
   );

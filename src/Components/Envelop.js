@@ -7,10 +7,12 @@ function Envelop({ correctAnswers, nextpage, envelopColor }) {
   const navigate = useNavigate();
 
   // Haal de correcte antwoorden uit het first_envelop object
+  const correctAnswerObject = correctAnswers[0]; // Zorg ervoor dat je het juiste object pakt
 
   const checkAnswers = () => {
     const lowerCaseValue = inputValue.toLowerCase().trim(); // Input normaliseren
-    if (correctAnswers.includes(lowerCaseValue)) {
+    console.log(correctAnswerObject);
+    if (correctAnswerObject.answer_options.includes(lowerCaseValue)) {
       navigate(nextpage); // Navigeer naar de volgende pagina
     } else {
       setErrors("Dit antwoord is fout, probeer opnieuw!"); // Toon foutmelding

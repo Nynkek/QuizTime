@@ -8,6 +8,8 @@ export default function ScoreAnimationComponent() {
     const [latestScore, setLatestScore] = useState(() => score);
     const [scoreDifference, setScoreDifference] = useState(0);
 
+
+
     useEffect(() => {
         if (score === latestScore) {
             return;
@@ -21,9 +23,11 @@ export default function ScoreAnimationComponent() {
         }, 1000);
 
         return () => clearTimeout(timeout);
-    }, [latestScore, score]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [score]);
 
     const isPositive = scoreDifference > 0;
+   
 
     return (
         <div className={`animation-overlay ${showsAnimation ? 'visible' : ''}`}>

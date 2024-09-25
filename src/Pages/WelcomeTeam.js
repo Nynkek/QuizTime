@@ -17,7 +17,7 @@ function WelcomeTeam() {
   return (
     <>
       <div className="content-page">
-        <h1 className="circle-bg">Welkom Team {selectedTeam}!</h1>
+        <h1 className="circle-bg page-title">Welkom Team {selectedTeam}!</h1>
         <div className="content">
           <ol>
             <li>Gebruik steeds dezelfde telefoon voor de quiz</li>

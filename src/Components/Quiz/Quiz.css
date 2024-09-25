@@ -8,7 +8,6 @@
     margin-bottom: 20px;
 }
 
-
 /* TwoOptions.css */
 .puzzle-two-options {
     width: 100%;
@@ -28,7 +27,6 @@
     padding: 0;
     margin: 0;
     display: flex;
-
 }
 
 .puzzle-two-options li {
@@ -38,7 +36,7 @@
     font-size: 1em;
 }
 
-.puzzle-two-options li input[type="radio"] {
+.puzzle-two-options li input[type='radio'] {
     display: none;
 }
 
@@ -55,7 +53,7 @@
     border-radius: var(--borderRadius);
 }
 
-.puzzle-two-options li input[type="radio"]:checked+label {
+.puzzle-two-options li input[type='radio']:checked + label {
     background-color: var(--lightPurple);
     color: var(--darkBlack);
     border: 1px solid var(--darkestPurple);
@@ -73,7 +71,6 @@ h3 strong {
 .puzzle-multiple-choice {
     width: 100%;
     margin: 10px 0;
-    text-align: center;
 }
 
 .puzzle-multiple-choice ul {
@@ -86,7 +83,7 @@ h3 strong {
     margin: 10px 0;
 }
 
-.puzzle-multiple-choice li input[type="checkbox"] {
+.puzzle-multiple-choice li input[type='checkbox'] {
     display: none;
     /* Verberg de standaard checkbox */
 }
@@ -104,19 +101,16 @@ h3 strong {
     border-radius: var(--borderRadius);
 }
 
-.puzzle-multiple-choice li input[type="checkbox"]:checked+label {
+.puzzle-multiple-choice li input[type='checkbox']:checked + label {
     background-color: var(--lightPurple);
     color: var(--darkBlack);
     border: 1px solid var(--darkestPurple);
-
 }
 
 /* Stijlen voor de Drag & Drop lijst */
 .quiz-drag-and-drop-list {
-    text-align: center;
     width: 100%;
     margin: 10px 0;
-
 }
 
 .quiz-drag-and-drop-list .quiz-container {
@@ -141,33 +135,26 @@ h3 strong {
     align-items: center;
     background-color: none;
     padding: 1px;
-
 }
 
 /* Pijl naar boven */
 
 .quiz-container .arrow-text-top {
     padding-top: 6em;
-
 }
 
 .quiz-container .arrow-top {
-
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 15px solid black;
     padding-top: 1em;
-
-
 }
 
 .quiz-container .arrow-bottom {
-
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 15px solid black;
     padding-bottom: 1em;
-
 }
 
 .arrow-line {
@@ -175,7 +162,6 @@ h3 strong {
     height: 100%;
     background-color: black;
 }
-
 
 .droppable {
     padding: 8px;
@@ -186,7 +172,6 @@ h3 strong {
     user-select: none;
     width: 100%;
     padding: 20px;
-    text-align: center;
     cursor: pointer;
     background-color: var(--purple);
     color: var(--darkBlack);
@@ -194,11 +179,10 @@ h3 strong {
     transition: background-color 0.3s ease;
     border-radius: var(--borderRadius);
     margin-bottom: 10px;
-
 }
 
 .draggable.isDragging {
-    background-color: var(--lightPurple)
+    background-color: var(--lightPurple);
 }
 
 /* MatchValues */
@@ -206,7 +190,6 @@ h3 strong {
     display: flex;
     justify-content: space-around;
     border-radius: var(--borderRadius);
-
 }
 
 .droppable-container-answer-options {
@@ -214,8 +197,6 @@ h3 strong {
     display: flex;
     flex-direction: column;
 }
-
-
 
 .droppable-area {
     width: 220px;
@@ -253,5 +234,4 @@ h3 strong {
     background-color: var(--purple);
     padding: 8px;
     border-radius: var(--borderRadius);
-
 }

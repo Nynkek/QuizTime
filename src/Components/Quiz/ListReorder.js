@@ -6,9 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import './Quiz.css';
 import { questions_reorder } from '../../Data/questions';
 
-
-
-function ListReorder() {
+function ListReorder({ nextpage }) {
     const answersLocalStorageKey = 'quizAnswers_listReorder';
     const itemsListLocalStorageKey = 'quizAnswers_listReorder_itemList';
 
@@ -26,9 +24,9 @@ function ListReorder() {
         return items;
     };
 
-    const [answers, setAnswers] = useState(loadLocalStorage(answersLocalStorageKey)); // Houd de antwoorden bij
+    const [answers, setAnswers] = useState(() => loadLocalStorage(answersLocalStorageKey)); // Houd de antwoorden bij
     const [visibleQuestions, setVisibleQuestions] = useState([0]); // Houd bij welke vragen zichtbaar zijn
-    const [itemsList, setItemsList] = useState(loadItemsList()); // Houd de items bij voor elke vraag
+    const [itemsList, setItemsList] = useState(() => loadItemsList()); // Houd de items bij voor elke vraag
     const [allAnswered, setAllAnswered] = useState(false);
     const [errors, setErrors] = useState([]);
     const { score, setScore } = useContext(ScoreContext);
@@ -124,12 +122,11 @@ function ListReorder() {
         setScore(newScore);
 
         if (allAnsweredCorrectly) {
-            navigate('/quiz4');
+            navigate(nextpage);
         }
     };
 
     return (
-        <>
         <div className="quiz-drag-and-drop-list">
             {visibleQuestions.map(questionIndex => {
                 const currentQuestion = questions_reorder[questionIndex];
@@ -198,9 +195,7 @@ function ListReorder() {
                     </div>
                 );
             })}
-      
-        </div>
-        <button
+            <button
                 type="button"
                 onClick={checkAnswers}
                 className="btn-next-page"
@@ -208,7 +203,7 @@ function ListReorder() {
             >
                 Submit &#8594;
             </button>
-        </>
+        </div>
     );
 }
 

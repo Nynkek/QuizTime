@@ -169,7 +169,12 @@ h3 strong {
 }
 
 .draggable {
+  position: relative;
+  display: flex;
+  align-items: center; /* Zorgt ervoor dat de items verticaal gecentreerd zijn */
+  padding-left: 50%; /* Extra ruimte aan de linkerkant voor het icoon */
   user-select: none;
+
   width: 100%;
   padding: 20px;
   cursor: pointer;
@@ -181,6 +186,20 @@ h3 strong {
   margin-bottom: 10px;
 }
 
+.drag-title {
+  padding-left: 28px;
+  justify-content: center;
+}
+
+.drag-icon {
+  position: absolute;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .draggable.isDragging {
   background-color: var(--lightPurple);
 }
@@ -190,6 +209,7 @@ h3 strong {
   display: flex;
   justify-content: space-around;
   border-radius: var(--borderRadius);
+  user-select: none;
 }
 
 .droppable-container-answer-options {
@@ -201,6 +221,7 @@ h3 strong {
 }
 
 .droppable-area {
+  user-select: none;
   width: 12ch;
   border: 1px solid var(--darkBlack);
   padding: 8px;

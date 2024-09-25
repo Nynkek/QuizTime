@@ -6,11 +6,10 @@ header {
   margin: 0px auto;
   min-height: 5em;
   width: 100%;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lichte schaduw aan de onderkant */
+  box-shadow: 0 4px 6px rgba(51, 0, 145, 0.3);
 }
 
 header .team-name {
-  min-width: 6ch;
   font-size: 1.5em;
 }
 
@@ -19,7 +18,7 @@ header .team-name p {
 }
 
 header .score {
-  min-width: 10ch;
+  min-width: 6ch;
   align-self: center;
   text-align: end;
   font-size: 1.5em;

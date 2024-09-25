@@ -2,10 +2,9 @@ import React, { useRef, useContext } from 'react';
 import { toPng } from 'html-to-image';
 import { ScoreContext } from '../Context/ScoreProvider';
 
-const ShareComponent = () => {
+export default function ShareComponent() {
     const textRef = useRef(null);
     const { score } = useContext(ScoreContext); // Gebruik de context
-
 
     const handleShare = async () => {
         try {
@@ -17,7 +16,7 @@ const ShareComponent = () => {
                 await navigator.share({
                     files: [file],
                     title: 'Gedeelde afbeelding',
-                    text: { score },
+                    text: { score }
                 });
             } else {
                 console.error('Delen is niet mogelijk op dit apparaat.');
@@ -36,6 +35,4 @@ const ShareComponent = () => {
             <button onClick={handleShare}>Deel</button>
         </div>
     );
-};
-
-export default ShareComponent;
+}

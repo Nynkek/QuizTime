@@ -27,7 +27,12 @@ export default function ScoreAnimationComponent() {
   const isPositive = scoreDifference > 0;
 
   return (
-    <div className={`animation-overlay ${showsAnimation ? "visible" : ""}`}>
+    <div
+      className={`
+        animation-overlay 
+        ${showsAnimation ? "visible" : ""} 
+        `}
+    >
       <div
         className={`score-container ${isPositive ? "positive" : "negative"}`}
       >

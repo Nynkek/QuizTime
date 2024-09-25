@@ -14,7 +14,6 @@ function TeamPicker() {
   };
 
   useEffect(() => {
-    console.log(selectedTeamIndex);
     window.scrollTo(0, 0);
   }, []);
 
@@ -37,7 +36,7 @@ function TeamPicker() {
           <button
             type="button"
             className="btn-next-page"
-            disabled={selectedTeamIndex == undefined}
+            disabled={selectedTeamIndex === undefined}
           >
             Start &#8594;{" "}
           </button>

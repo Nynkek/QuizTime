@@ -1,9 +1,7 @@
 .title-screen {
-    font-size: 5em;
+    font-size: 3.5em;
     text-align: center;
 }
-
-
 
 .btn-container {
     display: flex;
@@ -40,7 +38,6 @@
     justify-content: space-between;
     align-items: center;
 }
-
 
 .page-title {
     font-size: 2em;
@@ -84,6 +81,11 @@
 
 .content ol {
     padding-left: 1em;
+    padding-top: 1em;
+}
+
+.content li {
+    padding-top: 0.8em;
 }
 
 .link-next-page {

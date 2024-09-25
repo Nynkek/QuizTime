@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import './Pages.css';
 
 function TeamPicker() {
-    const teams = ["Team Alpa", "Team Beta", "Team Cetra", "Team Deltra", "Team Echo"];
+    const teams = ["Team Joukje", "Team Wiebe", "Team Janke Jacoba", "Team Alle"];
     const [selectedTeam, setSelectedTeam] = useState("");
 
     const handleTeamSelect = (team) => {

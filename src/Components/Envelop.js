@@ -6,13 +6,9 @@ function Envelop({ correctAnswers, nextpage, envelopColor }) {
   const [errors, setErrors] = useState(""); // Errors string om foutmelding te tonen
   const navigate = useNavigate();
 
-  // Haal de correcte antwoorden uit het first_envelop object
-  const correctAnswerObject = correctAnswers[0]; // Zorg ervoor dat je het juiste object pakt
-
   const checkAnswers = () => {
     const lowerCaseValue = inputValue.toLowerCase().trim(); // Input normaliseren
-    console.log(correctAnswerObject);
-    if (correctAnswerObject.answer_options.includes(lowerCaseValue)) {
+    if (correctAnswers.includes(lowerCaseValue)) {
       navigate(nextpage); // Navigeer naar de volgende pagina
     } else {
       setErrors("Dit antwoord is fout, probeer opnieuw!"); // Toon foutmelding

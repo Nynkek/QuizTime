@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header/Header";
 import "./Pages.css";
-import { villa_envelop } from "../Data/envelopQuestions";
+import { envelops, teamOrder } from "../Data/envelopQuestions";
+import { teams } from "../Data/teams";
 import GroupPicture from "../Components/GroupPicture";
 import Envelop from "../Components/Envelop";
 
-function QuizP1End() {
-  const nextpage = "/quiz2";
+export default function QuizEnvelop({ index, next }) {
   const [pictureTaken, setPictureTaken] = useState(false);
 
   useEffect(() => {
@@ -17,8 +17,12 @@ function QuizP1End() {
     setPictureTaken(true);
   };
 
-  const opdracht =
-    "Zoek de mooiste bladeren uit en laat die zien! Leg ze na de foto in een mooi patroon, zodat de volgende groep ze opvalt.";
+  const selectedTeamName = localStorage.getItem("selectedTeam");
+  const teamIndex = teams.indexOf(selectedTeamName);
+
+  const envelopIndex = teamOrder[teamIndex][index];
+  const envelop = envelops[envelopIndex];
+
   return (
     <>
       <Header />
@@ -27,16 +31,15 @@ function QuizP1End() {
         <div className="content">
           {!pictureTaken && (
             <GroupPicture
-              location={1}
-              opdracht={opdracht}
-              hide={handleButtonPress}
+              opdracht={envelop.photoPrompt}
+              didPressButton={handleButtonPress}
             />
           )}
           {pictureTaken && (
             <Envelop
-              correctAnswers={villa_envelop}
-              nextpage={nextpage}
-              envelopColor="groen"
+              correctAnswers={envelop.answer_options}
+              nextpage={next}
+              envelopColor={envelop.color}
             />
           )}
         </div>
@@ -44,5 +47,3 @@ function QuizP1End() {
     </>
   );
 }
-
-export default QuizP1End;

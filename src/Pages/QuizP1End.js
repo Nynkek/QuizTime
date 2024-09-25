@@ -1,50 +1,49 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from "react";
 import Header from "../Components/Header/Header";
-import { Link } from "react-router-dom";
-import './Pages.css';
-
-
+import "./Pages.css";
+import { first_envelop } from "../Data/envelopQuestions";
+import GroupPicture from "../Components/GroupPicture";
+import Envelop from "../Components/Envelop";
 
 function QuizP1End() {
+  const nextpage = "/quiz2";
+  const [pictureTaken, setPictureTaken] = useState(false);
 
+  // Scroll naar boven bij laden van de pagina
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pictureTaken]);
 
+  const handleButtonPress = () => {
+    setPictureTaken(true);
+  };
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
+  const opdracht =
+    "Zoek de mooiste bladeren uit en laat die zien! Leg ze na de foto in een mooi patroon, zodat de volgende groep ze opvalt.";
+  return (
+    <>
+      <Header />
 
-    return (
-        <>
-            <Header />
-            <div className="content-page low-circle-bg">
-                <div className="content">
-                    <h1 className='page-title'>Envelop</h1>
-                    <div className='quiz-container'>
-                        <p className='code-box'>Je mag de volgende envelop openen! Met de naam:</p>
-                        <code className='digit'>groen</code>
-                        <p className='code-box'>Kom pas weer terug bij deze app als je de volgende code hebt ontdekt.</p>
-                    </div>
-                    <div className='quiz-container'>
-                        <h2>Puzzles van de envelop opgelost?</h2>
-                        <p className='code-box'>Vul je gevonden code in om door te gaan</p>
-                        <div className="input-widget">
-                            <input max="9999" className="input" placeholder='0000' />
-                            <div className="digit-background">
-                                <div className="digit"></div>
-                                <div className="digit"></div>
-                                <div className="digit"></div>
-                                <div className="digit"></div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <Link to="/quiz2" className='link-next-page'>
-                    <button type='button' className='btn-next-page'>Indienen &#8594; </button>
-                </Link>
-            </div>
-        </>
-    );
+      <div className="content-page low-circle-bg">
+        <div className="content">
+          {!pictureTaken && (
+            <GroupPicture
+              location={1}
+              opdracht={opdracht}
+              hide={handleButtonPress}
+            />
+          )}
+          {pictureTaken && (
+            <Envelop
+              correctAnswers={first_envelop}
+              nextpage={nextpage}
+              envelopColor="groen"
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default QuizP1End;

@@ -30,9 +30,10 @@ function WelcomeTeam() {
                         <li>Beantwoord de vragen samen met je team
                         </li>
                         <li>Je score wordt bijgehouden, dus denk goed na over de antwoorden</li>
-                        <li>Je mag de envelop pas openen als je het codewoord hebt</li>
+                        <li>Je mag de volgende envelop pas openen als je het codewoord hebt</li>
+                        <li>De route is in totaal zo'n 2km lopen, het avontuur duurt ongeveer een uur.</li>
 
-                        <li>Bij vragen kun je Nynke een bericht sturen 06 48813006</li>
+                        <li>Bij vragen kun je Nynke een bericht sturen <a href="https://wa.me/+31648813006">06 48813006</a></li>
                     </ol>
 
                 </div>

@@ -13,7 +13,8 @@ function Intro() {
     return (
         <>
             <div className='content-page circle-bg'>
-                <h1 className='title-screen'>Quiz Time met de Sluisjes</h1>
+                <h1 className='title-screen'>Het Geheim van de Sluis&shy;wachter
+                </h1>
                 <Link to="/teampicker" className='link-next-page'>
                     <button type='button' className='btn-next-page'>Kies je team &#8594; </button>
                 </Link>

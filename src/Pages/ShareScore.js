@@ -80,6 +80,8 @@ function ShareScore() {
                 Deel Score
             </button>
 
+            <p>Lukt het delen via deze knop niet? Stuur dan een screenshot van je score naar Nynke <a href="https://wa.me/+31648813006">06 48813006</a></p>
+
             <Link to="/" className=''>
                 <button type='button' >doe quiz opnieuw &#8594; </button>
             </Link>

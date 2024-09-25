@@ -1,6 +1,1 @@
-export const teams = [
-  "Team Joukje",
-  "Team Wiebe",
-  "Team Janke Jacoba",
-  "Team Alle",
-];
+export const teams = ["Joukje", "Wiebe", "Janke Jacoba", "Alle"];

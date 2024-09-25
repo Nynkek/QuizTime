@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./Pages.css";
+import { teams } from "../Data/teams";
 
 function WelcomeTeam() {
-  const [selectedTeam] = useState(
-    () => localStorage.getItem("selectedTeam") || ""
+  const [selectedTeamIndex] = useState(
+    () => localStorage.getItem("selectedTeamIndex") || 0
   );
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const selectedTeam = teams[selectedTeamIndex];
+
   return (
     <>
       <div className="content-page">
-        <h1 className="circle-bg">Welkom {selectedTeam}!</h1>
+        <h1 className="circle-bg">Welkom Team {selectedTeam}!</h1>
         <div className="content">
           <ol>
             <li>Gebruik steeds dezelfde telefoon voor de quiz</li>

@@ -4,21 +4,17 @@ import { teams } from "../Data/teams";
 import "./Pages.css";
 
 function TeamPicker() {
-  const [selectedTeam, setSelectedTeam] = useState("");
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(() =>
+    localStorage.getItem("selectedTeamIndex")
+  );
 
-  const handleTeamSelect = (team) => {
-    setSelectedTeam(team);
-    localStorage.setItem("selectedTeam", team);
+  const handleTeamSelect = (teamIndex) => {
+    setSelectedTeamIndex(teamIndex);
+    localStorage.setItem("selectedTeamIndex", teamIndex);
   };
 
   useEffect(() => {
-    const savedTeam = localStorage.getItem("selectedTeam");
-    if (savedTeam) {
-      setSelectedTeam(savedTeam);
-    }
-  }, []);
-
-  useEffect(() => {
+    console.log(selectedTeamIndex);
     window.scrollTo(0, 0);
   }, []);
 
@@ -30,10 +26,10 @@ function TeamPicker() {
           {teams.map((team, index) => (
             <button
               key={index}
-              onClick={() => handleTeamSelect(team)}
-              className={selectedTeam === team ? "selected" : ""}
+              onClick={() => handleTeamSelect(index)}
+              className={selectedTeamIndex === index ? "selected" : ""}
             >
-              {team}
+              Team {team}
             </button>
           ))}
         </div>
@@ -41,7 +37,7 @@ function TeamPicker() {
           <button
             type="button"
             className="btn-next-page"
-            disabled={!selectedTeam}
+            disabled={selectedTeamIndex == undefined}
           >
             Start &#8594;{" "}
           </button>

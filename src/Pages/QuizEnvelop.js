@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Components/Header/Header";
 import "./Pages.css";
 import { envelops, teamOrder } from "../Data/envelopQuestions";
-import { teams } from "../Data/teams";
 import GroupPicture from "../Components/GroupPicture";
 import Envelop from "../Components/Envelop";
 
@@ -23,10 +22,9 @@ export default function QuizEnvelop({ index, next }) {
     navigate(next);
   };
 
-  const selectedTeamName = localStorage.getItem("selectedTeam");
-  const teamIndex = teams.indexOf(selectedTeamName);
+  const selectedTeamIndex = localStorage.getItem("selectedTeamIndex");
 
-  const envelopIndex = teamOrder[teamIndex][index];
+  const envelopIndex = teamOrder[selectedTeamIndex][index];
   const envelop = envelops[envelopIndex];
 
   return (

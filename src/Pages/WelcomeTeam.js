@@ -3,14 +3,9 @@ import { Link } from "react-router-dom";
 import "./Pages.css";
 
 function WelcomeTeam() {
-  const [selectedTeam, setSelectedTeam] = useState("");
-
-  useEffect(() => {
-    const savedTeam = localStorage.getItem("selectedTeam");
-    if (savedTeam) {
-      setSelectedTeam(savedTeam);
-    }
-  }, []);
+  const [selectedTeam, setSelectedTeam] = useState(
+    () => localStorage.getItem("selectedTeam") || ""
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +14,7 @@ function WelcomeTeam() {
   return (
     <>
       <div className="content-page">
-        <h1 className="circle-bg page-title">Welkom {selectedTeam}!</h1>
+        <h1 className="circle-bg">Welkom {selectedTeam}!</h1>
         <div className="content">
           <ol>
             <li>Gebruik steeds dezelfde telefoon voor de quiz</li>
@@ -41,7 +36,7 @@ function WelcomeTeam() {
             </li>
           </ol>
         </div>
-        <Link to="/quiz1" className="link-next-page">
+        <Link to="/startQuiz" className="link-next-page">
           <button type="button" className="btn-next-page">
             Start quiz &#8594;{" "}
           </button>

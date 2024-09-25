@@ -21,7 +21,7 @@ export default function ScoreAnimationComponent() {
         }, 1000);
 
         return () => clearTimeout(timeout);
-    }, [score]);
+    }, [latestScore, score]);
 
     const isPositive = scoreDifference > 0;
 

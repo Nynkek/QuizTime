@@ -112,6 +112,7 @@ h3 {
   margin-bottom: 2em;
   color: var(--white);
   padding: 2ch;
+  margin-left: 5%;
   width: 90%;
   font-size: 1.4em;
   border-radius: var(--borderRadius);

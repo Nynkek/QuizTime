@@ -1,9 +1,9 @@
 // De volgorde waarop elk team de enveloppen te zien krijgt
 export const teamOrder = [
-  [0, 3, 1, 2],
-  [2, 0, 3, 1],
-  [3, 1, 2, 0],
-  [1, 2, 0, 3],
+  [0, 3, 1, 2], // Team Joukje
+  [2, 0, 3, 1], // Team Wiebe
+  [3, 1, 2, 0], // Team Janke Jacoba
+  [1, 2, 0, 3], // Team Alle
 ];
 
 export const envelops = [

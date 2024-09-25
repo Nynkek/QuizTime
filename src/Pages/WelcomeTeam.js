@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Pages.css";
 
 function WelcomeTeam() {
-  const [selectedTeam, setSelectedTeam] = useState(
+  const selectedTeam = useState(
     () => localStorage.getItem("selectedTeam") || ""
   );
 

@@ -7,7 +7,7 @@ export const teamOrder = [
 ];
 
 export const envelops = [
-  {
+  /* 0 */ {
     color: "Groen",
     location: "Lorentz",
     question: "Hoeveel mensen staan er afgebeeld?",
@@ -15,7 +15,7 @@ export const envelops = [
     type: "input",
     answer_options: ["zeven", "7"],
   },
-  {
+  /* 1 */ {
     color: "Blauw",
     location: "Grote Waterval",
     question: "Naar welke windrichting stroomt de waterval?",
@@ -23,7 +23,7 @@ export const envelops = [
     type: "input",
     answer_options: ["zuiden", "zuid", "zw", "zuid-west", "westen", "west"],
   },
-  {
+  /* 2 */ {
     color: "Roze",
     location: "Belvedère",
     question: "Hoeveel deuren zie je als je voor de toren staat?",
@@ -32,7 +32,7 @@ export const envelops = [
     type: "input",
     answer_options: ["twee", "2"],
   },
-  {
+  /* 3 */ {
     color: "Geel",
     location: "Zwanenbrug",
     question: "Hoeveel zwanen tel je op de brug?",

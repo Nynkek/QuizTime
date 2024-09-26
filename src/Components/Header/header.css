@@ -1,25 +1,25 @@
 header {
   background-color: var(--lightPurple);
+  font-size: 1.5em;
   display: flex;
-  padding: 3ch;
+  padding-left: 3ch;
+  padding-bottom: 2ch;
+  padding-right: 3ch;
   justify-content: space-between;
   margin: 0px auto;
-  min-height: 5em;
+  min-height: 4em;
   width: 100%;
   box-shadow: 0 4px 6px rgba(51, 0, 145, 0.3);
 }
 
 header .team-name {
   font-size: 1.5em;
-}
-
-header .team-name p {
-  font-size: 1.2em;
+  align-self: baseline;
+  text-align: start;
 }
 
 header .score {
-  min-width: 6ch;
-  align-self: center;
+  min-width: fit-content;
+  align-self: baseline;
   text-align: end;
-  font-size: 1.5em;
 }

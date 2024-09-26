@@ -1,35 +1,18 @@
 import React, { useState } from "react";
 
-function Envelop({
-  correctAnswers,
-  nextpage,
-  envelopColor,
-  answeredCorrectly,
-}) {
+function Envelop({ envelop, answeredCorrectly }) {
   const [inputValue, setInputValue] = useState(""); // State om de inputwaarde bij te houden
   const [errors, setErrors] = useState(""); // Errors string om foutmelding te tonen
   const [isAtLocation, setIsAtLocation] = useState(false);
 
   const checkAnswers = () => {
     const lowerCaseValue = inputValue.toLowerCase().trim(); // Input normaliseren
-    if (correctAnswers.includes(lowerCaseValue)) {
+    if (envelop.answer_options.includes(lowerCaseValue)) {
       answeredCorrectly();
     } else {
       setErrors("Dit antwoord is fout, probeer opnieuw!"); // Toon foutmelding
     }
   };
-
-  // function LocationClue() {
-  //   return (
-
-  //   );
-  // }
-
-  // function LocationAnswer() {
-  //   return (
-
-  //   );
-  // }
 
   return (
     <>
@@ -40,12 +23,11 @@ function Envelop({
             <p className="code-box">
               Je mag de volgende envelop openen! Met de naam:
             </p>
-            <code className="digit">{envelopColor}</code>
+            <code className="digit">{envelop.color}</code>
             <p className="code-box">
-              Kom pas weer terug bij deze app als je de volgende code hebt
-              ontdekt.
+              Kom pas weer terug bij deze app bij de volgende locatie bent.
             </p>
-          </div>{" "}
+          </div>
           <button
             type="button"
             className="btn-next-page"
@@ -58,27 +40,21 @@ function Envelop({
         </>
       ) : (
         <>
+          <h1 className="page-title">{envelop.location} opgelost?</h1>
+
           <div className="quiz-container">
-            <h2>Puzzles van de envelop opgelost?</h2>
-            <p className="code-box">Vul je gevonden code in om door te gaan</p>
-            <div className="input-widget">
-              <input
-                max="9999"
-                className="input"
-                placeholder="0000"
-                value={inputValue}
-                onChange={(e) => {
-                  setInputValue(e.target.value); // Update de waarde bij input verandering
-                  setErrors(""); // Verwijder foutmelding bij verandering
-                }}
-              />
-              <div className="digit-background">
-                <div className="digit"></div>
-                <div className="digit"></div>
-                <div className="digit"></div>
-                <div className="digit"></div>
-              </div>
-            </div>
+            <h2>Beantwoord de vraag uit de envelop ({envelop.color})</h2>
+            <p className="code-box">Antwoord:</p>
+            <input
+              max="9999"
+              className="invoerveld"
+              placeholder="????"
+              value={inputValue}
+              onChange={(e) => {
+                setInputValue(e.target.value); // Update de waarde bij input verandering
+                setErrors(""); // Verwijder foutmelding bij verandering
+              }}
+            />
           </div>
           {errors && (
             <p className="error">{errors}</p> // Toon foutmelding als het antwoord fout is

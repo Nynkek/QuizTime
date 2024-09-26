@@ -35,7 +35,13 @@ function WelcomeTeam() {
 
             <li>
               Bij vragen kun je Nynke een bericht sturen{" "}
-              <a href="https://wa.me/+31648813006">06 48813006</a>
+              <a
+                href="https://wa.me/+31648813006"
+                target="_blank"
+                rel="noreferrer"
+              >
+                06 48813006
+              </a>
             </li>
           </ol>
         </div>

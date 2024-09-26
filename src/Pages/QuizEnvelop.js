@@ -34,11 +34,7 @@ export default function QuizEnvelop({ index, next }) {
       <div className="content-page low-circle-bg">
         <div className="content">
           {!isPictureTime ? (
-            <Envelop
-              correctAnswers={envelop.answer_options}
-              envelopColor={envelop.color}
-              answeredCorrectly={answeredCorrectly}
-            />
+            <Envelop envelop={envelop} answeredCorrectly={answeredCorrectly} />
           ) : (
             <GroupPicture
               opdracht={envelop.photoPrompt}

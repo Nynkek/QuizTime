@@ -5,7 +5,7 @@ import { teams } from "../Data/teams";
 
 function WelcomeTeam() {
   const [selectedTeamIndex] = useState(
-    () => localStorage.getItem("selectedTeamIndex") || 0
+    () => parseInt(localStorage.getItem("selectedTeamIndex"), 10) || 0
   );
 
   useEffect(() => {

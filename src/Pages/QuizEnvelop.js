@@ -22,7 +22,8 @@ export default function QuizEnvelop({ index, next }) {
     navigate(next);
   };
 
-  const selectedTeamIndex = localStorage.getItem("selectedTeamIndex");
+  const selectedTeamIndex =
+    parseInt(localStorage.getItem("selectedTeamIndex"), 10) || 0;
 
   const envelopIndex = teamOrder[selectedTeamIndex][index];
   const envelop = envelops[envelopIndex];

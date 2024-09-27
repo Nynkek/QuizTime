@@ -21,7 +21,15 @@ export const envelops = [
     question: "Naar welke windrichting stroomt de waterval?",
     photoPrompt: "Poseer op een rijtje, gesorteerd op lengte",
     type: "input",
-    answer_options: ["zuiden", "zuid", "zw", "zuid-west", "westen", "west"],
+    answer_options: [
+      "zuiden",
+      "zuid",
+      "zw",
+      "zuid-west",
+      "westen",
+      "west",
+      "zuidwest",
+    ],
   },
   /* 2 */ {
     color: "Roze",
@@ -30,14 +38,14 @@ export const envelops = [
     photoPrompt:
       "Zoek de mooiste bladeren uit en laat die zien! Leg ze na de foto in een mooi patroon, zodat de volgende groep ze opvalt.",
     type: "input",
-    answer_options: ["twee", "2"],
+    answer_options: ["twee", "2", "two"],
   },
   /* 3 */ {
     color: "Geel",
     location: "Zwanenbrug",
     question: "Hoeveel zwanen tel je op de brug?",
-    photoPrompt: "Doe iets met het woord ‘Zwanenmeer’",
+    photoPrompt: "Doe iets creatiefs met het woord ‘Zwanenmeer’",
     type: "input",
-    answer_options: ["zes", "6"],
+    answer_options: ["zes", "6", "six"],
   },
 ];

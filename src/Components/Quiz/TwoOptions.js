@@ -6,6 +6,8 @@ import { questions_two_options } from "../../Data/questions";
 
 function TwoOptions({ nextpage }) {
   const { score, setScore } = useContext(ScoreContext);
+  const { wrongAmount, setWrongAmount } = useContext(ScoreContext);
+
   const navigate = useNavigate();
 
   const [answers, setAnswers] = useState(() => {
@@ -51,6 +53,7 @@ function TwoOptions({ nextpage }) {
   const checkAnswers = () => {
     const newErrors = [];
     let newScore = score;
+    let newWrongAmount = wrongAmount;
     let hasErrors = false;
 
     // Controleer alle antwoorden
@@ -59,6 +62,8 @@ function TwoOptions({ nextpage }) {
       newErrors[index] = !isCorrect;
       if (!isCorrect) {
         newScore -= 5; // -5 voor fout antwoord
+        newWrongAmount++;
+
         hasErrors = true;
       }
     });
@@ -72,6 +77,7 @@ function TwoOptions({ nextpage }) {
     }
 
     setScore(newScore);
+    setWrongAmount(newWrongAmount);
   };
 
   const allAnswered =

@@ -138,6 +138,7 @@ function MatchValuesApp({ nextpage }) {
   });
 
   const { score, setScore } = useContext(ScoreContext);
+  const { wrongAmount, setWrongAmount } = useContext(ScoreContext);
   const [allAnswered, setAllAnswered] = useState(false);
   const [errors, setErrors] = useState([]);
   const navigate = useNavigate();
@@ -157,6 +158,7 @@ function MatchValuesApp({ nextpage }) {
 
   const checkAnswers = () => {
     let tempScore = score;
+    let newWrongAmount = wrongAmount;
     const newErrors = [];
 
     questions_drag_and_drop.forEach((question, index) => {
@@ -188,7 +190,10 @@ function MatchValuesApp({ nextpage }) {
       if (!arraysEqual(userAnswers, correctAnswers)) {
         newErrors[index] = true; // Vraag is fout
         tempScore -= 5; // Strafpunten
+        newWrongAmount++;
         setScore(tempScore);
+        setWrongAmount(newWrongAmount);
+
         console.log(
           `Fout: Antwoorden komen niet overeen voor vraag ${index + 1}`
         );

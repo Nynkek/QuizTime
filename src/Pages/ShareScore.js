@@ -15,7 +15,7 @@ function ShareScore() {
   const [selectedTeamIndex] = useState(
     () => localStorage.getItem("selectedTeamIndex") || 0
   );
-  const { score } = useContext(ScoreContext); // Gebruik de context
+  const { score, wrongAmount } = useContext(ScoreContext); // Gebruik de context
   const printRef = useRef();
 
   const selectedTeam = teams[selectedTeamIndex];
@@ -58,6 +58,17 @@ function ShareScore() {
       }
     }, "image/png");
   };
+  const checkWrongAnswers = () => {
+    var calculatedErrors = (questionCount.total * 10 - score) / 5;
+    var actualErrors = wrongAmount;
+    if (calculatedErrors === actualErrors) {
+      return actualErrors + " fout";
+    } else
+      return (
+        actualErrors +
+        " aantal fouten, maar het lijkt alsof je hebt valsgespeeld..."
+      );
+  };
 
   return (
     <div className="content-page circle-bg">
@@ -70,10 +81,7 @@ function ShareScore() {
         <div className="div2">Totaal goed:</div>
         <div className="div3">{questionCount.total} vragen</div>
         <div className="div4">Totaal fouten: </div>
-        <div className="div5">
-          {" "}
-          {(questionCount.total * 10 - score) / 5} fout
-        </div>
+        <div className="div5">{checkWrongAnswers()}</div>
         <div className="div6">Totale Score:</div>
         <div className="div7">{score} punten</div>
         <div className="div8">

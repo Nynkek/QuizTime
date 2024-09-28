@@ -115,7 +115,7 @@ h3 {
   border: none;
 }
 
-.btn-next-page:active {
+.btn-next-page:active:not(:disabled) {
   background-color: var(--lighterPurple);
   color: var(--darkBlack);
   border: 1px solid var(--darkBlack);

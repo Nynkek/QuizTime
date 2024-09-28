@@ -193,9 +193,15 @@
 .invoerveld {
   font-family: "Courier New", Courier, monospace;
   vertical-align: top;
-  margin-left: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
   display: inline-block;
   position: relative;
   width: 8ch;
+  background-color: var(--lightOrange);
+}
+
+.opdracht {
+  /* font-weight: 500; */
+  /* text-decoration: underline; */
+  color: var(--darkestPurple);
 }

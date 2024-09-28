@@ -33,6 +33,8 @@ function ListReorder({ nextpage }) {
   const [allAnswered, setAllAnswered] = useState(false);
   const [errors, setErrors] = useState([]);
   const { score, setScore } = useContext(ScoreContext);
+  const { wrongAmount, setWrongAmount } = useContext(ScoreContext);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -104,6 +106,7 @@ function ListReorder({ nextpage }) {
 
   const checkAnswers = () => {
     let newScore = score;
+    let newWrongAmount = wrongAmount;
     const newErrors = [];
 
     questions_reorder.forEach((question, index) => {
@@ -113,6 +116,7 @@ function ListReorder({ nextpage }) {
       if (!arraysEqual(userAnswers, question.answer_order_indices)) {
         newErrors[index] = true;
         newScore -= 5;
+        newWrongAmount++;
       } else {
         newErrors[index] = false;
       }
@@ -125,6 +129,7 @@ function ListReorder({ nextpage }) {
       newScore += questions_reorder.length * 10; // +10 per goed antwoord
     }
     setScore(newScore);
+    setWrongAmount(newWrongAmount);
 
     if (allAnsweredCorrectly) {
       navigate(nextpage);

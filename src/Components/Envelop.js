@@ -44,10 +44,10 @@ function Envelop({ envelop, answeredCorrectly }) {
         </>
       ) : (
         <>
-          <h1 className="page-title">{envelop.location} opgelost?</h1>
+          <h1 className="page-title">Vraag voor locatie {envelop.location}</h1>
 
           <div className="quiz-container">
-            <h2>Beantwoord de vraag uit de envelop ({envelop.color})</h2>
+            <h2>{envelop.question}</h2>
             <p className="code-box">Antwoord:</p>
             <form onSubmit={handleSubmit}>
               <input

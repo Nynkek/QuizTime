@@ -55,7 +55,10 @@ function Envelop({ envelop, answeredCorrectly }) {
                 className="invoerveld"
                 placeholder="????"
                 spellcheck="false"
+                autoCorrect="off"
                 autocomplete="off"
+                autoCapitalize="off"
+                enterkeyhint="send"
                 value={inputValue}
                 onChange={(e) => {
                   setInputValue(e.target.value); // Update de waarde bij input verandering

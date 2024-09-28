@@ -13,9 +13,8 @@ function QuizP3() {
       <Header />
       <div className="content-page">
         <div className="content">
-          <h1>Zet in de juiste volgorde</h1>
+          <h1 className="page-title">Zet in de juiste volgorde</h1>
           <p>Sleep de namen naar de juiste volgorde</p>
-
           <ListReorder nextpage="/quiz3end" />
         </div>
       </div>

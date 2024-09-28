@@ -17,6 +17,8 @@ function ShareScore() {
     () => localStorage.getItem("selectedTeamIndex") || 0
   );
   const { score, wrongAmount } = useContext(ScoreContext); // Gebruik de context
+  const [hasSharedScore, setHasSharedScore] = useState(false);
+
   const printRef = useRef();
 
   const selectedTeam = teams[selectedTeamIndex];
@@ -51,11 +53,13 @@ function ShareScore() {
         } catch (error) {
           console.error("Er ging iets mis tijdens het delen:", error);
         }
+        setHasSharedScore(true);
       } else {
         // Fallback als delen van bestanden niet wordt ondersteund
         alert(
           "Delen wordt niet ondersteund op dit apparaat. Probeer een screenshot te maken."
         );
+        setHasSharedScore(true);
       }
     }, "image/png");
   };
@@ -89,38 +93,48 @@ function ShareScore() {
           <FrisianWord />
         </div>
       </div>
+      {hasSharedScore && (
+        <div className="content">
+          <div className=" quiz-container">
+            <h1 className="page-title">Score gedeeld?</h1>
+            <p>
+              Dan mag je de laatste envelop openen! Hopelijk vind je het Geheim
+              van de Sluiswachter!
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Share-knop */}
-      <button
-        type="button"
-        className="btn-next-page"
-        onClick={handleShareImage}
-      >
-        Deel Score
-      </button>
-
-      <div className=" quiz-container">
-        <h1 className="page-title">Score gedeeld?</h1>
-        <p>
-          Dan mag je de laatste envelop openen! Hopelijk vind je Geheim van de
-          Sluiswachter, Doetje van der Sluis!
-        </p>
-      </div>
-      <div className=" quiz-container">
-        <p>
-          Lukt het delen via deze knop niet? Stuur dan een screenshot van je
-          score naar Nynke:
-          <a href="https://wa.me/+31648813006" target="_blank" rel="noreferrer">
-            06 48813006
-          </a>
-        </p>
-      </div>
-
-      <Link to="/" className="">
-        <button type="button" onClick={localStorage.clear()}>
-          doe quiz opnieuw &#8594;{" "}
+      <div className="content">
+        <button
+          type="button"
+          className="btn-next-page"
+          onClick={handleShareImage}
+        >
+          Deel Score
         </button>
-      </Link>
+
+        <div className=" quiz-container">
+          <p>
+            Lukt het delen via deze knop niet? Stuur dan een screenshot van je
+            score naar Nynke:
+            <a
+              href="https://wa.me/+31648813006"
+              target="_blank"
+              rel="noreferrer"
+            >
+              06 48813006
+            </a>
+          </p>
+        </div>
+
+        <Link to="/" className="">
+          <button type="button" onClick={localStorage.clear()}>
+            doe quiz opnieuw &#8594;{" "}
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

@@ -10,6 +10,8 @@ import {
   questions_two_options,
 } from "../Data/questions";
 import { teams } from "../Data/teams";
+import { frieseWoord } from "../Data/frieseWoord";
+import FrisianWord from "../Components/FrisianWord";
 
 function ShareScore() {
   const [selectedTeamIndex] = useState(
@@ -70,6 +72,8 @@ function ShareScore() {
       );
   };
 
+  const friezeWoorden = frieseWoord;
+
   return (
     <div className="content-page circle-bg">
       <h1 className="title-screen">Deel je score!</h1>
@@ -85,8 +89,7 @@ function ShareScore() {
         <div className="div6">Totale Score:</div>
         <div className="div7">{score} punten</div>
         <div className="div8">
-          Jullie krijgen het favorieten Frieze woord van Lina als cadeautje voor
-          het meedoen: Gearfetsje!{" "}
+          <FrisianWord />
         </div>
       </div>
 
@@ -98,6 +101,14 @@ function ShareScore() {
       >
         Deel Score
       </button>
+
+      <div className=" quiz-container">
+        <h1>Score gedeeld?</h1>
+        <p>
+          Dan mag je de laatste envelop openen! Hopelijk vind je Geheim van de
+          Sluiswachter, Doetje van der Sluis!
+        </p>
+      </div>
 
       <p>
         Lukt het delen via deze knop niet? Stuur dan een screenshot van je score

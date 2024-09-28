@@ -108,15 +108,14 @@ h3 {
   margin-top: 1em;
   margin-bottom: 2em;
   color: var(--white);
-  padding: 2ch;
-  margin-left: 5%;
+  padding: 1.5ch;
   width: 90%;
   font-size: 1.4em;
   border-radius: var(--borderRadius);
   border: none;
 }
 
-.btn-next-page:active {
+.btn-next-page:active:not(:disabled) {
   background-color: var(--lighterPurple);
   color: var(--darkBlack);
   border: 1px solid var(--darkBlack);
@@ -124,6 +123,10 @@ h3 {
 
 .btn-next-page:disabled {
   opacity: 0.2;
+}
+
+.link-next-page .btn-next-page {
+  margin-left: 5%;
 }
 
 /* animation */

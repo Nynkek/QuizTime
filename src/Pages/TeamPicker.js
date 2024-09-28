@@ -19,28 +19,30 @@ function TeamPicker() {
 
   return (
     <>
-      <div className=".content-page">
-        <h1 className="circle-bg page-title">Kies je team:</h1>
-        <div className="btn-container">
-          {teams.map((team, index) => (
+      <div className="content-page">
+        <div class="content">
+          <h1 className="circle-bg page-title">Kies je team:</h1>
+          <div className="btn-container">
+            {teams.map((team, index) => (
+              <button
+                key={index}
+                onClick={() => handleTeamSelect(index)}
+                className={selectedTeamIndex === index ? "selected" : ""}
+              >
+                Team {team}
+              </button>
+            ))}
+          </div>
+          <Link to="/welcome-team" className="link-next-page">
             <button
-              key={index}
-              onClick={() => handleTeamSelect(index)}
-              className={selectedTeamIndex === index ? "selected" : ""}
+              type="button"
+              className="btn-next-page"
+              disabled={selectedTeamIndex === undefined}
             >
-              Team {team}
+              Start &#8594;{" "}
             </button>
-          ))}
+          </Link>
         </div>
-        <Link to="/welcome-team" className="link-next-page">
-          <button
-            type="button"
-            className="btn-next-page"
-            disabled={selectedTeamIndex === undefined}
-          >
-            Start &#8594;{" "}
-          </button>
-        </Link>
       </div>
     </>
   );

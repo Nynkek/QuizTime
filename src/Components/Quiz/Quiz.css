@@ -8,6 +8,16 @@
   margin-bottom: 20px;
 }
 
+/* .quiz-container .btn-next-page {
+  margin-left: 0;
+} */
+.puzzle-two-options .btn-next-page,
+.puzzle-multiple-choice .btn-next-page,
+.quiz-drag-and-drop-list .btn-next-page,
+.page .btn-next-page {
+  margin-left: 5%;
+}
+
 /* TwoOptions.css */
 .puzzle-two-options {
   width: 100%;

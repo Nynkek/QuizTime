@@ -17,8 +17,8 @@ function WelcomeTeam() {
   return (
     <>
       <div className="content-page">
-        <h1 className="circle-bg page-title">Welkom Team {selectedTeam}!</h1>
         <div className="content">
+          <h1 className="circle-bg page-title">Welkom Team {selectedTeam}!</h1>
           <ol>
             <li>Gebruik steeds dezelfde telefoon voor de quiz</li>
             <li>Beantwoord de vragen samen met je team</li>
@@ -44,12 +44,12 @@ function WelcomeTeam() {
               </a>
             </li>
           </ol>
+          <Link to="/startQuiz" className="link-next-page">
+            <button type="button" className="btn-next-page">
+              Start quiz &#8594;{" "}
+            </button>
+          </Link>
         </div>
-        <Link to="/startQuiz" className="link-next-page">
-          <button type="button" className="btn-next-page">
-            Start quiz &#8594;{" "}
-          </button>
-        </Link>
       </div>
     </>
   );

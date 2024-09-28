@@ -14,6 +14,11 @@ function Envelop({ envelop, answeredCorrectly }) {
     }
   };
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    checkAnswers();
+  }
+
   return (
     <>
       {!isAtLocation ? (
@@ -44,18 +49,23 @@ function Envelop({ envelop, answeredCorrectly }) {
           <div className="quiz-container">
             <h2>Beantwoord de vraag uit de envelop ({envelop.color})</h2>
             <p className="code-box">Antwoord:</p>
-            <input
-              max="9999"
-              className="invoerveld"
-              placeholder="????"
-              spellcheck="false"
-              autocomplete="off"
-              value={inputValue}
-              onChange={(e) => {
-                setInputValue(e.target.value); // Update de waarde bij input verandering
-                setErrors(""); // Verwijder foutmelding bij verandering
-              }}
-            />
+            <form onSubmit={handleSubmit}>
+              <input
+                max="9999"
+                className="invoerveld"
+                placeholder="????"
+                spellcheck="false"
+                autoCorrect="off"
+                autocomplete="off"
+                autoCapitalize="off"
+                enterkeyhint="send"
+                value={inputValue}
+                onChange={(e) => {
+                  setInputValue(e.target.value); // Update de waarde bij input verandering
+                  setErrors(""); // Verwijder foutmelding bij verandering
+                }}
+              />
+            </form>
           </div>
           {errors && (
             <p className="error">{errors}</p> // Toon foutmelding als het antwoord fout is

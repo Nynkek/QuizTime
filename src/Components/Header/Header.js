@@ -6,7 +6,7 @@ import "./header.css";
 
 function Header() {
   const [selectedTeamIndex] = useState(
-    () => localStorage.getItem("selectedTeamIndex") || 0
+    () => parseInt(localStorage.getItem("selectedTeamIndex"), 10) || 0
   );
   const { score } = useContext(ScoreContext); // Gebruik de context
 

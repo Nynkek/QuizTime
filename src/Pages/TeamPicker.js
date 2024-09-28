@@ -5,7 +5,7 @@ import "./Pages.css";
 
 function TeamPicker() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(() =>
-    localStorage.getItem("selectedTeamIndex")
+    parseInt(localStorage.getItem("selectedTeamIndex"), 10)
   );
 
   const handleTeamSelect = (teamIndex) => {

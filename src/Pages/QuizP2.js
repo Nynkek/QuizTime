@@ -14,7 +14,7 @@ function QuizP2() {
       <div className="content-page">
         <div className="content">
           <h1>Meerdere opties mogelijk</h1>
-          <p>Selecteer de juiste mensen</p>
+          <p>Selecteer de juiste mensen (meervoud!)</p>
 
           <MultipleChoice nextpage="/quiz2end" />
         </div>

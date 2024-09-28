@@ -20,12 +20,11 @@ function Envelop({ envelop, answeredCorrectly }) {
         <>
           <h1 className="page-title">Envelop</h1>
           <div className="quiz-container">
-            <p className="code-box">
-              Je mag de volgende envelop openen! Met de naam:
-            </p>
+            <p className="code-box">Je mag de envelop openen! Met de naam:</p>
             <code className="digit">{envelop.color}</code>
             <p className="code-box">
-              Kom pas weer terug bij deze app bij de volgende locatie bent.
+              Kom pas weer terug bij deze app als jullie bij de volgende locatie
+              zijn.
             </p>
           </div>
           <button

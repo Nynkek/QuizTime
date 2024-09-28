@@ -10,7 +10,6 @@ import {
   questions_two_options,
 } from "../Data/questions";
 import { teams } from "../Data/teams";
-import { frieseWoord } from "../Data/frieseWoord";
 import FrisianWord from "../Components/FrisianWord";
 
 function ShareScore() {
@@ -72,8 +71,6 @@ function ShareScore() {
       );
   };
 
-  const friezeWoorden = frieseWoord;
-
   return (
     <div className="content-page circle-bg">
       <h1 className="title-screen">Deel je score!</h1>
@@ -103,23 +100,26 @@ function ShareScore() {
       </button>
 
       <div className=" quiz-container">
-        <h1>Score gedeeld?</h1>
+        <h1 className="page-title">Score gedeeld?</h1>
         <p>
           Dan mag je de laatste envelop openen! Hopelijk vind je Geheim van de
           Sluiswachter, Doetje van der Sluis!
         </p>
       </div>
-
-      <p>
-        Lukt het delen via deze knop niet? Stuur dan een screenshot van je score
-        naar Nynke:
-        <a href="https://wa.me/+31648813006" target="_blank" rel="noreferrer">
-          06 48813006
-        </a>
-      </p>
+      <div className=" quiz-container">
+        <p>
+          Lukt het delen via deze knop niet? Stuur dan een screenshot van je
+          score naar Nynke:
+          <a href="https://wa.me/+31648813006" target="_blank" rel="noreferrer">
+            06 48813006
+          </a>
+        </p>
+      </div>
 
       <Link to="/" className="">
-        <button type="button">doe quiz opnieuw &#8594; </button>
+        <button type="button" onClick={localStorage.clear()}>
+          doe quiz opnieuw &#8594;{" "}
+        </button>
       </Link>
     </div>
   );

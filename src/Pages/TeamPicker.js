@@ -5,13 +5,15 @@ import "./Pages.css";
 
 function TeamPicker() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(() =>
-    parseInt(localStorage.getItem("selectedTeamIndex"), 10)
+    localStorage.getItem("selectedTeamIndex")
   );
 
   const handleTeamSelect = (teamIndex) => {
     setSelectedTeamIndex(teamIndex);
     localStorage.setItem("selectedTeamIndex", teamIndex);
   };
+
+  console.log(selectedTeamIndex);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,14 +22,16 @@ function TeamPicker() {
   return (
     <>
       <div className="content-page">
-        <div class="content">
+        <div className="content">
           <h1 className="circle-bg page-title">Kies je team:</h1>
           <div className="btn-container">
             {teams.map((team, index) => (
               <button
                 key={index}
                 onClick={() => handleTeamSelect(index)}
-                className={selectedTeamIndex === index ? "selected" : ""}
+                className={
+                  parseInt(selectedTeamIndex, 10) === index ? "selected" : ""
+                }
               >
                 Team {team}
               </button>
@@ -37,7 +41,7 @@ function TeamPicker() {
             <button
               type="button"
               className="btn-next-page"
-              disabled={selectedTeamIndex === undefined}
+              disabled={selectedTeamIndex === null}
             >
               Start &#8594;{" "}
             </button>

@@ -36,7 +36,7 @@ export const envelops = [
   /* 2 */ {
     color: "Roze",
     location: "Belvedère",
-    question: "Hoeveel deuren zie je als je voor de toren staat?",
+    question: "Hoeveel deuren zitten aan de voorzijde?",
     photoPrompt:
       "Zoek de mooiste bladeren uit en laat die zien! Leg ze na de foto in een mooi patroon, zodat de volgende groep ze opvalt.",
     type: "input",

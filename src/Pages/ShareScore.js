@@ -16,7 +16,8 @@ function ShareScore() {
   const [selectedTeamIndex] = useState(
     () => localStorage.getItem("selectedTeamIndex") || 0
   );
-  const { score, wrongAmount } = useContext(ScoreContext); // Gebruik de context
+  const { score, setScore, wrongAmount, setWrongAmount } =
+    useContext(ScoreContext); // Gebruik de context
   const [hasSharedScore, setHasSharedScore] = useState(false);
 
   const printRef = useRef();
@@ -130,7 +131,14 @@ function ShareScore() {
         </div>
 
         <Link to="/" className="">
-          <button type="button" onClick={localStorage.clear()}>
+          <button
+            type="button"
+            onClick={() => {
+              localStorage.clear();
+              setScore(0);
+              setWrongAmount(0);
+            }}
+          >
             doe quiz opnieuw &#8594;{" "}
           </button>
         </Link>

@@ -3,7 +3,7 @@ import Header from "../Components/Header/Header";
 import "./Pages.css";
 import ListReorder from "../Components/Quiz/ListReorder";
 
-function QuizP3() {
+function QuizP3({ nextPage }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -15,7 +15,7 @@ function QuizP3() {
         <div className="content">
           <h1 className="page-title">Zet in de juiste volgorde</h1>
           <p>Sleep de namen naar de juiste volgorde</p>
-          <ListReorder nextpage="/quiz3end" />
+          <ListReorder nextpage={nextPage} />
         </div>
       </div>
     </>

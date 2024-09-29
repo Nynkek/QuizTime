@@ -3,7 +3,7 @@ import Header from "../Components/Header/Header";
 import "./Pages.css";
 import TwoOptions from "../Components/Quiz/TwoOptions";
 
-function QuizP1() {
+function QuizP1({ nextPage }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -16,7 +16,7 @@ function QuizP1() {
           <h1>Klopt het?</h1>
           <p>Denk jij dat het waar is?</p>
 
-          <TwoOptions nextpage="/quiz1end" />
+          <TwoOptions nextpage={nextPage} />
         </div>
       </div>
     </>

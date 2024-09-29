@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./Pages.css";
 import { teams } from "../Data/teams";
 
-function WelcomeTeam() {
+function WelcomeTeam({ nextPage }) {
   const [selectedTeamIndex] = useState(
     () => parseInt(localStorage.getItem("selectedTeamIndex"), 10) || 0
   );
@@ -44,7 +44,7 @@ function WelcomeTeam() {
               </a>
             </li>
           </ol>
-          <Link to="/startQuiz" className="link-next-page">
+          <Link to={nextPage} className="link-next-page">
             <button type="button" className="btn-next-page">
               Start quiz &#8594;{" "}
             </button>

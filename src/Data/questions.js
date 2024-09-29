@@ -55,7 +55,7 @@ export const questions_multiple_choice = [
     answer_index: [0],
   },
   {
-    title: "Wie heeft blauwe ogen",
+    title: "Wie heeft blauwe",
     focused_word: "ogen",
     type: "checkbox",
     q_options: ["Michiel", "Hannie", "Teun", "Lina", "Sytske"],
@@ -69,7 +69,7 @@ export const questions_multiple_choice = [
     answer_index: [1, 4],
   },
   {
-    title: "Wie is er na 2000 geboren?",
+    title: "Wie is er na 2000",
     focused_word: "geboren",
     type: "checkbox",
     q_options: ["Lina", "Jouke", "Wytse", "Juniper", "Lisa"],

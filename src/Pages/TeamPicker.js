@@ -13,8 +13,6 @@ function TeamPicker() {
     localStorage.setItem("selectedTeamIndex", teamIndex);
   };
 
-  console.log(selectedTeamIndex);
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);

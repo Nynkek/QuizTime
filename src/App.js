@@ -12,7 +12,8 @@ import ShareScore from "./Pages/ShareScore";
 import { ScoreProvider } from "./Context/ScoreProvider";
 import ScoreAnimationComponent from "./Components/ScoreAnimationComponent";
 
-const fieldMode = false;
+// Zet op `true` om alle envelopvragen over te slaan
+const atHomeMode = false;
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
             <Route
               path="/welcome-team"
               element={
-                <WelcomeTeam nextPage={fieldMode ? "/startQuiz" : "/quiz1"} />
+                <WelcomeTeam nextPage={!atHomeMode ? "/startQuiz" : "/quiz1"} />
               }
             />
 
@@ -36,7 +37,9 @@ function App() {
 
             <Route
               path="/quiz1"
-              element={<QuizP1 nextPage={fieldMode ? "/quiz1end" : "/quiz2"} />}
+              element={
+                <QuizP1 nextPage={!atHomeMode ? "/quiz1end" : "/quiz2"} />
+              }
             />
             <Route
               path="/quiz1end"
@@ -45,7 +48,9 @@ function App() {
 
             <Route
               path="/quiz2"
-              element={<QuizP2 nextPage={fieldMode ? "/quiz2end" : "/quiz3"} />}
+              element={
+                <QuizP2 nextPage={!atHomeMode ? "/quiz2end" : "/quiz3"} />
+              }
             />
             <Route
               path="/quiz2end"
@@ -54,7 +59,9 @@ function App() {
 
             <Route
               path="/quiz3"
-              element={<QuizP3 nextPage={fieldMode ? "/quiz3end" : "/quiz4"} />}
+              element={
+                <QuizP3 nextPage={!atHomeMode ? "/quiz3end" : "/quiz4"} />
+              }
             />
             <Route
               path="/quiz3end"

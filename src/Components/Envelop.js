@@ -39,7 +39,7 @@ function Envelop({ envelop, answeredCorrectly }) {
               setIsAtLocation(true);
             }}
           >
-            We zijn er!
+            We zijn er &#8594;
           </button>
         </>
       ) : (

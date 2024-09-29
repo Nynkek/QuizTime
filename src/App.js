@@ -13,7 +13,7 @@ import { ScoreProvider } from "./Context/ScoreProvider";
 import ScoreAnimationComponent from "./Components/ScoreAnimationComponent";
 
 // Zet op `true` om alle envelopvragen over te slaan
-const atHomeMode = false;
+const atHomeMode = true;
 
 function App() {
   return (
